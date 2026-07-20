@@ -3,28 +3,24 @@
 """
 buscador_mercados.py
 ═══════════════════════════════════════════════════════════════════════════════
-Científico de Datos — Procesamiento de Eventos Deportivos en Tiempo Real
-Conexión directa a iSportsAPI (http://api.isportsapi.com) para análisis
-probabilístico de mercados de fútbol en vivo + Notificaciones Telegram.
+Motor probabilístico en tiempo real para mercados de fútbol vía iSportsAPI.
+Notificaciones Telegram mediante python-telegram-bot (MarkdownV2 seguro).
 
 Requisitos:
-    pip install requests python-dotenv
+    pip install requests python-dotenv python-telegram-bot
 
 Variables de entorno:
-    YOUR_API_KEY        →  Token de autenticación iSportsAPI
-    TELEGRAM_BOT_TOKEN  →  Token del bot de Telegram
-    TELEGRAM_CHAT_ID    →  ID del chat/canal de destino
-
-Autor: Generado por IA especializada en datos deportivos
-Fecha: 2026-07-20
+    YOUR_API_KEY        →  iSportsAPI
+    TELEGRAM_BOT_TOKEN  →  Bot de Telegram
+    TELEGRAM_CHAT_ID    →  Chat/canal destino
 """
 
 import os
 import sys
 import time
-import json
-import logging
 import math
+import asyncio
+import logging
 from datetime import datetime
 from typing import Dict, List, Optional, Any, Tuple
 from dataclasses import dataclass, field
@@ -32,9 +28,12 @@ from collections import defaultdict
 
 import requests
 from dotenv import load_dotenv
+from telegram import Bot
+from telegram.constants import ParseMode
+from telegram.helpers import escape_markdown
 
 # ═══════════════════════════════════════════════════════════════════════════════
-# CONFIGURACIÓN GLOBAL
+# CONFIGURACIÓN
 # ═══════════════════════════════════════════════════════════════════════════════
 
 load_dotenv()
@@ -46,10 +45,10 @@ TELEGRAM_CHAT_ID: str = os.getenv("TELEGRAM_CHAT_ID", "").strip()
 BASE_URL: str = "http://api.isportsapi.com"
 MIRROR_URL: str = "http://api2.isportsapi.com"
 OUTPUT_MD: str = "partidos_alta_probabilidad.md"
-TELEGRAM_API_URL: str = "https://api.telegram.org/bot{token}/sendMessage"
 
 UMBRAL_PROBABILIDAD: float = 85.0
 TOP_N_TELEGRAM: int = 5
+TOP_N_MARKDOWN: int = 50          # ← Límite estricto para evitar archivos gigantes
 RATE_LIMIT_SECONDS: int = 10
 REQUEST_TIMEOUT: int = 30
 
@@ -79,7 +78,7 @@ logger = logging.getLogger("buscador_mercados")
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
-# MODELOS DE DATOS
+# MODELOS
 # ═══════════════════════════════════════════════════════════════════════════════
 
 @dataclass
@@ -107,7 +106,6 @@ class PartidoEnVivo:
     match_time_ts: int
     half_start_ts: int
     stats: Dict[str, Dict[str, Any]] = field(default_factory=dict)
-    probabilidades: List[Dict[str, Any]] = field(default_factory=list)
 
 
 @dataclass
@@ -119,13 +117,13 @@ class MercadoProbabilidad:
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
-# CLIENTE HTTP iSportsAPI
+# CLIENTE iSportsAPI
 # ═══════════════════════════════════════════════════════════════════════════════
 
 class ISportsAPIClient:
     def __init__(self, api_key: str):
         if not api_key:
-            raise ValueError("La variable de entorno YOUR_API_KEY es obligatoria.")
+            raise ValueError("YOUR_API_KEY es obligatoria.")
         self.api_key = api_key
         self.session = requests.Session()
         self.session.headers.update({
@@ -146,9 +144,7 @@ class ISportsAPIClient:
             time.sleep(sleep_for)
         self.last_call_ts = time.time()
 
-    def _call(
-        self, endpoint: str, params: Optional[Dict[str, Any]] = None, use_mirror: bool = False
-    ) -> Dict[str, Any]:
+    def _call(self, endpoint: str, params: Optional[Dict[str, Any]] = None, use_mirror: bool = False) -> Dict[str, Any]:
         base = MIRROR_URL if use_mirror else BASE_URL
         url = f"{base}{endpoint}"
         req_params = {"api_key": self.api_key}
@@ -188,39 +184,40 @@ class ISportsAPIClient:
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
-# CLIENTE TELEGRAM
+# NOTIFICADOR TELEGRAM (python-telegram-bot)
 # ═══════════════════════════════════════════════════════════════════════════════
 
 class TelegramNotifier:
-    """Envía notificaciones de mercados de alta probabilidad a Telegram."""
-
     def __init__(self, bot_token: str, chat_id: str):
         self.bot_token = bot_token
         self.chat_id = chat_id
         self.enabled = bool(bot_token and chat_id)
         if not self.enabled:
-            logger.warning("Telegram no configurado. No se enviarán notificaciones.")
+            logger.warning("Telegram no configurado.")
 
-    @staticmethod
-    def _escape_md(text: str) -> str:
-        """
-        Escapa caracteres especiales de MarkdownV2 de Telegram.
-        Caracteres que DEBEN escaparse según la API oficial de Telegram:
-        _ * [ ] ( ) ~ ` > # + - = | { } . !
-        """
-        chars = r"_*[]()~`>#+-=|{}.!"
-        for ch in chars:
-            text = text.replace(ch, f"\\{ch}")
-        return text
+    async def _send_async(self, text: str) -> bool:
+        bot = Bot(token=self.bot_token)
+        try:
+            await bot.send_message(
+                chat_id=self.chat_id,
+                text=text,
+                parse_mode=ParseMode.MARKDOWN_V2,
+                disable_web_page_preview=True,
+            )
+            logger.info("✅ Telegram: mensaje enviado correctamente.")
+            return True
+        except Exception as exc:
+            logger.error(f"❌ Error enviando a Telegram: {exc}")
+            return False
+        finally:
+            await bot.session.close()
 
     def enviar_top_mercados(self, hallazgos: List[Dict[str, Any]]) -> bool:
-        """Envía los TOP_N_TELEGRAM mercados con mayor probabilidad a Telegram."""
         if not self.enabled:
-            logger.info("Telegram deshabilitado. Saltando notificación.")
+            logger.info("Telegram deshabilitado.")
             return False
-
         if not hallazgos:
-            logger.info("No hay hallazgos para enviar a Telegram.")
+            logger.info("No hay hallazgos para Telegram.")
             return False
 
         top = sorted(hallazgos, key=lambda x: x["probabilidad"], reverse=True)[:TOP_N_TELEGRAM]
@@ -228,65 +225,41 @@ class TelegramNotifier:
 
         lines = [
             "🎯 *TOP 5 MERCADOS DE ALTA PROBABILIDAD*",
-            f"📅 `{self._escape_md(ahora)}`",
+            f"📅 `{escape_markdown(ahora, version=2)}`",
             "",
         ]
 
-        emojis_num = ["1️⃣", "2️⃣", "3️⃣", "4️⃣", "5️⃣"]
-
+        emojis = ["1️⃣", "2️⃣", "3️⃣", "4️⃣", "5️⃣"]
         for i, h in enumerate(top):
-            emoji = emojis_num[i] if i < len(emojis_num) else f"{i+1}."
+            emoji = emojis[i] if i < len(emojis) else f"{i+1}."
             prob = h["probabilidad"]
             bar_len = int(prob / 10)
             bar = "█" * bar_len + "░" * (10 - bar_len)
 
-            # Truncar nombres largos para evitar mensajes excesivos
-            partido = h['partido'][:50] + "..." if len(h['partido']) > 50 else h['partido']
-            liga = h['liga'][:30] + "..." if len(h['liga']) > 30 else h['liga']
+            partido = h["partido"][:50] + "..." if len(h["partido"]) > 50 else h["partido"]
+            liga = h["liga"][:30] + "..." if len(h["liga"]) > 30 else h["liga"]
 
             lines.append(
-                f"{emoji} *{self._escape_md(h['mercado'])}* \\- `{self._escape_md(h['seleccion'])}`"
+                f"{emoji} *{escape_markdown(h['mercado'], version=2)}* \\- "
+                f"`{escape_markdown(h['seleccion'], version=2)}`"
             )
             lines.append(f"   🏆 *{prob}%* {bar}")
-            lines.append(f"   ⚽ {self._escape_md(partido)}")
-            lines.append(f"   📊 {self._escape_md(liga)} | {h['minuto']}' | {h['marcador']}")
+            lines.append(f"   ⚽ {escape_markdown(partido, version=2)}")
+            lines.append(
+                f"   📊 {escape_markdown(liga, version=2)} | "
+                f"{h['minuto']}' | {escape_markdown(h['marcador'], version=2)}"
+            )
             lines.append("")
 
-        lines.append("\\-\\-" + "-" * 28)
+        lines.append("\\-\\-" + "\\-" * 28)
         lines.append("🔔 Umbral mínimo: ≥ 85% probabilidad matemática")
         lines.append("📡 Fuente: iSportsAPI en tiempo real")
 
         mensaje = "\n".join(lines)
-
-        # Verificar límite de longitud de Telegram (4096 caracteres)
         if len(mensaje) > 4000:
-            logger.warning(f"Mensaje Telegram muy largo ({len(mensaje)} chars), truncando...")
-            mensaje = mensaje[:4000] + "\n\n... (mensaje truncado)"
+            mensaje = mensaje[:4000] + "\n\n... (truncado)"
 
-        url = TELEGRAM_API_URL.format(token=self.bot_token)
-        payload = {
-            "chat_id": self.chat_id,
-            "text": mensaje,
-            "parse_mode": "MarkdownV2",
-            "disable_web_page_preview": True,
-        }
-
-        try:
-            resp = requests.post(url, json=payload, timeout=15)
-            resp.raise_for_status()
-            result = resp.json()
-            if result.get("ok"):
-                logger.info(f"✅ Telegram: mensaje enviado (msg_id={result['result']['message_id']})")
-                return True
-            else:
-                logger.error(f"❌ Telegram API error: {result}")
-                return False
-        except requests.exceptions.HTTPError as exc:
-            logger.error(f"❌ Telegram HTTP error {exc.response.status_code}: {exc.response.text}")
-            return False
-        except Exception as exc:
-            logger.error(f"❌ Error enviando a Telegram: {exc}")
-            return False
+        return asyncio.run(self._send_async(mensaje))
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
@@ -423,14 +396,14 @@ class MotorProbabilistico:
                     mercado=f"Over/Under {linea} Goles",
                     seleccion=f"Over {linea}",
                     probabilidad=round(prob_over, 2),
-                    razonamiento=f"xG restante={total_xg:.2f}, goles={total_goals}",
+                    razonamiento=f"xG={total_xg:.2f}, goles={total_goals}",
                 ))
             if prob_under >= UMBRAL_PROBABILIDAD:
                 resultados.append(MercadoProbabilidad(
                     mercado=f"Over/Under {linea} Goles",
                     seleccion=f"Under {linea}",
                     probabilidad=round(prob_under, 2),
-                    razonamiento=f"xG restante={total_xg:.2f}, goles={total_goals}",
+                    razonamiento=f"xG={total_xg:.2f}, goles={total_goals}",
                 ))
 
         # 2. BTTS
@@ -449,7 +422,7 @@ class MotorProbabilistico:
             resultados.append(MercadoProbabilidad(
                 mercado="Ambos Marcan (BTTS)", seleccion="No",
                 probabilidad=round(prob_btts_no * 100, 2),
-                razonamiento=f"P(≤1 marca)={prob_btts_no*100:.1f}%",
+                razonamiento=f"P(≤1)={prob_btts_no*100:.1f}%",
             ))
 
         # 3. DOBLE OPORTUNIDAD
@@ -476,7 +449,7 @@ class MotorProbabilistico:
             if pct >= UMBRAL_PROBABILIDAD:
                 resultados.append(MercadoProbabilidad(
                     mercado="Doble Oportunidad", seleccion=sel, probabilidad=pct,
-                    razonamiento=f"{desc} | momentum={momentum:.2f}",
+                    razonamiento=f"{desc}, momentum={momentum:.2f}",
                 ))
 
         # 4. HÁNDICAPS
@@ -562,14 +535,14 @@ class MotorProbabilistico:
             if pct >= UMBRAL_PROBABILIDAD:
                 resultados.append(MercadoProbabilidad(
                     mercado="Ganador del Encuentro (1X2)", seleccion=sel,
-                    probabilidad=pct, razonamiento=f"{label}",
+                    probabilidad=pct, razonamiento=label,
                 ))
 
         return resultados
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
-# ORQUESTADOR PRINCIPAL
+# ORQUESTADOR
 # ═══════════════════════════════════════════════════════════════════════════════
 
 class BuscadorMercados:
@@ -693,10 +666,11 @@ class BuscadorMercados:
 
         logger.info(f"    → {len(hallazgos)} mercados superan el umbral de {UMBRAL_PROBABILIDAD}%.")
 
+        # ── ENVIAR TOP 5 A TELEGRAM ──────────────────────────────────────────
         logger.info("[4.5/5] Enviando TOP 5 a Telegram...")
         self.telegram.enviar_top_mercados(hallazgos)
 
-        logger.info("[5/5] Generando reporte Markdown...")
+        logger.info("[5/5] Generando reporte Markdown (top 50)...")
         return self._generar_md(hallazgos)
 
     def _generar_md(self, hallazgos: List[Dict[str, Any]]) -> str:
@@ -705,7 +679,8 @@ class BuscadorMercados:
         if not hallazgos:
             return self._generar_md_sin_datos()
 
-        hallazgos_ordenados = sorted(hallazgos, key=lambda x: x["probabilidad"], reverse=True)
+        # ← LÍMITE ESTRICO: solo top 50 para evitar archivos de 17000+ líneas
+        hallazgos_ordenados = sorted(hallazgos, key=lambda x: x["probabilidad"], reverse=True)[:TOP_N_MARKDOWN]
 
         lines: List[str] = [
             "# 🎯 Partidos de Alta Probabilidad — iSportsAPI",
@@ -713,7 +688,7 @@ class BuscadorMercados:
             f"> **Generado:** `{ahora}`  ",
             f"> **Fuente:** iSportsAPI (http://api.isportsapi.com)  ",
             f"> **Umbral de filtro:** ≥ {UMBRAL_PROBABILIDAD}%  ",
-            f"> **Total de hallazgos:** {len(hallazgos_ordenados)}",
+            f"> **Mostrando:** top {len(hallazgos_ordenados)} de {len(hallazgos)} hallazgos",
             "",
             "---",
             "",
@@ -742,7 +717,7 @@ class BuscadorMercados:
         with open(OUTPUT_MD, "w", encoding="utf-8") as f:
             f.write(contenido)
 
-        logger.info(f"    → Reporte guardado en: {OUTPUT_MD}")
+        logger.info(f"    → Reporte guardado en: {OUTPUT_MD} ({len(hallazgos_ordenados)} hallazgos)")
         return contenido
 
     def _generar_md_sin_datos(self) -> str:
@@ -774,7 +749,7 @@ class BuscadorMercados:
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
-# PUNTO DE ENTRADA
+# ENTRYPOINT
 # ═══════════════════════════════════════════════════════════════════════════════
 
 def main() -> None:
