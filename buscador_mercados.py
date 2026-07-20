@@ -4,7 +4,7 @@
 buscador_mercados.py
 ═══════════════════════════════════════════════════════════════════════════════
 Motor probabilístico en tiempo real para mercados de fútbol vía iSportsAPI.
-Notificaciones Telegram mediante python-telegram-bot (MarkdownV2 seguro).
+Notificaciones Telegram mediante python-telegram-bot (HTML seguro).
 
 Requisitos:
     pip install requests python-dotenv python-telegram-bot
@@ -30,7 +30,6 @@ import requests
 from dotenv import load_dotenv
 from telegram import Bot
 from telegram.constants import ParseMode
-from telegram.helpers import escape_markdown
 
 # ═══════════════════════════════════════════════════════════════════════════════
 # CONFIGURACIÓN
@@ -48,7 +47,7 @@ OUTPUT_MD: str = "partidos_alta_probabilidad.md"
 
 UMBRAL_PROBABILIDAD: float = 85.0
 TOP_N_TELEGRAM: int = 5
-TOP_N_MARKDOWN: int = 50          # ← Límite estricto para evitar archivos gigantes
+TOP_N_MARKDOWN: int = 50
 RATE_LIMIT_SECONDS: int = 10
 REQUEST_TIMEOUT: int = 30
 
@@ -184,7 +183,7 @@ class ISportsAPIClient:
 
 
 # ═══════════════════════════════════════════════════════════════════════════════
-# NOTIFICADOR TELEGRAM (python-telegram-bot)
+# NOTIFICADOR TELEGRAM (python-telegram-bot con HTML)
 # ═══════════════════════════════════════════════════════════════════════════════
 
 class TelegramNotifier:
@@ -196,21 +195,19 @@ class TelegramNotifier:
             logger.warning("Telegram no configurado.")
 
     async def _send_async(self, text: str) -> bool:
-        bot = Bot(token=self.bot_token)
-        try:
-            await bot.send_message(
-                chat_id=self.chat_id,
-                text=text,
-                parse_mode=ParseMode.MARKDOWN_V2,
-                disable_web_page_preview=True,
-            )
-            logger.info("✅ Telegram: mensaje enviado correctamente.")
-            return True
-        except Exception as exc:
-            logger.error(f"❌ Error enviando a Telegram: {exc}")
-            return False
-        finally:
-            await bot.session.close()
+        async with Bot(token=self.bot_token) as bot:
+            try:
+                await bot.send_message(
+                    chat_id=self.chat_id,
+                    text=text,
+                    parse_mode=ParseMode.HTML,
+                    disable_web_page_preview=True,
+                )
+                logger.info("✅ Telegram: mensaje enviado correctamente.")
+                return True
+            except Exception as exc:
+                logger.error(f"❌ Error enviando a Telegram: {exc}")
+                return False
 
     def enviar_top_mercados(self, hallazgos: List[Dict[str, Any]]) -> bool:
         if not self.enabled:
@@ -224,8 +221,8 @@ class TelegramNotifier:
         ahora = datetime.now().strftime("%Y-%m-%d %H:%M UTC")
 
         lines = [
-            "🎯 *TOP 5 MERCADOS DE ALTA PROBABILIDAD*",
-            f"📅 `{escape_markdown(ahora, version=2)}`",
+            "<b>🎯 TOP 5 MERCADOS DE ALTA PROBABILIDAD</b>",
+            f"📅 <code>{ahora}</code>",
             "",
         ]
 
@@ -240,18 +237,16 @@ class TelegramNotifier:
             liga = h["liga"][:30] + "..." if len(h["liga"]) > 30 else h["liga"]
 
             lines.append(
-                f"{emoji} *{escape_markdown(h['mercado'], version=2)}* \\- "
-                f"`{escape_markdown(h['seleccion'], version=2)}`"
+                f"{emoji} <b>{partido}</b>"
             )
-            lines.append(f"   🏆 *{prob}%* {bar}")
-            lines.append(f"   ⚽ {escape_markdown(partido, version=2)}")
+            lines.append(f"   📊 {liga} | {h['minuto']}' | {h['marcador']}")
             lines.append(
-                f"   📊 {escape_markdown(liga, version=2)} | "
-                f"{h['minuto']}' | {escape_markdown(h['marcador'], version=2)}"
+                f"   🏆 <b>{prob}%</b> {bar} — <code>{h['seleccion']}</code>"
             )
+            lines.append(f"   🎰 {h['mercado']}")
             lines.append("")
 
-        lines.append("\\-\\-" + "\\-" * 28)
+        lines.append("─" * 30)
         lines.append("🔔 Umbral mínimo: ≥ 85% probabilidad matemática")
         lines.append("📡 Fuente: iSportsAPI en tiempo real")
 
@@ -679,7 +674,6 @@ class BuscadorMercados:
         if not hallazgos:
             return self._generar_md_sin_datos()
 
-        # ← LÍMITE ESTRICO: solo top 50 para evitar archivos de 17000+ líneas
         hallazgos_ordenados = sorted(hallazgos, key=lambda x: x["probabilidad"], reverse=True)[:TOP_N_MARKDOWN]
 
         lines: List[str] = [
