@@ -45,6 +45,7 @@ import sys
 import time
 import json
 import logging
+import math
 from datetime import datetime
 from typing import Dict, List, Optional, Any, Tuple
 from dataclasses import dataclass, field, asdict
@@ -351,7 +352,6 @@ class MotorProbabilistico:
     @staticmethod
     def _poisson_prob(lam: float, k: int) -> float:
         """Probabilidad Poisson P(X=k) con λ = goles esperados restantes."""
-        import math
         if lam <= 0:
             return 1.0 if k == 0 else 0.0
         return (lam ** k) * math.exp(-lam) / math.factorial(k)
@@ -359,7 +359,6 @@ class MotorProbabilistico:
     @staticmethod
     def _poisson_cdf(lam: float, max_k: int) -> float:
         """Probabilidad acumulada P(X <= max_k)."""
-        import math
         if lam <= 0:
             return 1.0 if max_k >= 0 else 0.0
         prob = 0.0
@@ -393,25 +392,31 @@ class MotorProbabilistico:
         home_xg_stats = 0.0
         away_xg_stats = 0.0
 
+        # Helper para extraer valor numérico de stats (la API devuelve strings)
+        def _val(stat_name: str, side: str) -> float:
+            if stat_name not in stats:
+                return 0.0
+            raw = stats[stat_name].get(side, 0)
+            try:
+                return float(raw)
+            except (ValueError, TypeError):
+                return 0.0
+
         # Tiros a puerta (máximo peso)
-        if "tiros_puerta" in stats:
-            home_xg_stats += stats["tiros_puerta"].get("home", 0) * self.prob_conversion["tiros_puerta"]
-            away_xg_stats += stats["tiros_puerta"].get("away", 0) * self.prob_conversion["tiros_puerta"]
+        home_xg_stats += _val("tiros_puerta", "home") * self.prob_conversion["tiros_puerta"]
+        away_xg_stats += _val("tiros_puerta", "away") * self.prob_conversion["tiros_puerta"]
 
         # Tiros dentro del área
-        if "tiros_dentro_area" in stats:
-            home_xg_stats += stats["tiros_dentro_area"].get("home", 0) * self.prob_conversion["tiros_dentro_area"]
-            away_xg_stats += stats["tiros_dentro_area"].get("away", 0) * self.prob_conversion["tiros_dentro_area"]
+        home_xg_stats += _val("tiros_dentro_area", "home") * self.prob_conversion["tiros_dentro_area"]
+        away_xg_stats += _val("tiros_dentro_area", "away") * self.prob_conversion["tiros_dentro_area"]
 
         # Tiros fuera del área
-        if "tiros_fuera_area" in stats:
-            home_xg_stats += stats["tiros_fuera_area"].get("home", 0) * self.prob_conversion["tiros_fuera_area"]
-            away_xg_stats += stats["tiros_fuera_area"].get("away", 0) * self.prob_conversion["tiros_fuera_area"]
+        home_xg_stats += _val("tiros_fuera_area", "home") * self.prob_conversion["tiros_fuera_area"]
+        away_xg_stats += _val("tiros_fuera_area", "away") * self.prob_conversion["tiros_fuera_area"]
 
         # Ataques peligrosos
-        if "ataques_peligrosos" in stats:
-            home_xg_stats += stats["ataques_peligrosos"].get("home", 0) * self.prob_conversion["ataques_peligrosos"]
-            away_xg_stats += stats["ataques_peligrosos"].get("away", 0) * self.prob_conversion["ataques_peligrosos"]
+        home_xg_stats += _val("ataques_peligrosos", "home") * self.prob_conversion["ataques_peligrosos"]
+        away_xg_stats += _val("ataques_peligrosos", "away") * self.prob_conversion["ataques_peligrosos"]
 
         # Corners como proxy de presión
         home_xg_stats += partido.home_corner * self.prob_conversion["corners"]
@@ -419,8 +424,8 @@ class MotorProbabilistico:
 
         # Posesión del balón (ajuste fino)
         if "posesion" in stats:
-            poss_h = stats["posesion"].get("home", 50)
-            poss_a = stats["posesion"].get("away", 50)
+            poss_h = _val("posesion", "home")
+            poss_a = _val("posesion", "away")
             # Diferencia de posesión > 60% añade ~0.15 xG al dominador
             if poss_h > 60:
                 home_xg_stats += 0.15 * factor_tiempo
@@ -468,12 +473,17 @@ class MotorProbabilistico:
 
         # ── 1. LÍNEAS DE GOLES TOTALES (Over/Under) ─────────────────────────
         for linea in [0.5, 1.5, 2.5, 3.5, 4.5]:
-            # Probabilidad de que se marquen exactamente k goles más
-            prob_over = 1.0 - self._poisson_cdf(total_xg, int(linea - total_goals))
-            prob_under = self._poisson_cdf(total_xg, int(linea - total_goals))
+            goles_necesarios = int(linea - total_goals)
+            if goles_necesarios < 0:
+                # Ya se superó la línea
+                prob_over = 100.0
+                prob_under = 0.0
+            else:
+                prob_over = (1.0 - self._poisson_cdf(total_xg, goles_necesarios)) * 100
+                prob_under = self._poisson_cdf(total_xg, goles_necesarios) * 100
 
-            prob_over_pct = round(prob_over * 100, 2)
-            prob_under_pct = round(prob_under * 100, 2)
+            prob_over_pct = round(prob_over, 2)
+            prob_under_pct = round(prob_under, 2)
 
             if prob_over_pct >= UMBRAL_PROBABILIDAD:
                 resultados.append(MercadoProbabilidad(
@@ -483,7 +493,7 @@ class MotorProbabilistico:
                     razonamiento=(
                         f"xG restante total={total_xg:.2f}, "
                         f"goles actuales={total_goals}, "
-                        f"λ={total_xg:.2f} → P(>{linea - total_goals})={prob_over_pct}%"
+                        f"λ={total_xg:.2f} → P(>{goles_necesarios})={prob_over_pct}%"
                     ),
                 ))
 
@@ -495,7 +505,7 @@ class MotorProbabilistico:
                     razonamiento=(
                         f"xG restante total={total_xg:.2f}, "
                         f"goles actuales={total_goals}, "
-                        f"λ={total_xg:.2f} → P(<={linea - total_goals})={prob_under_pct}%"
+                        f"λ={total_xg:.2f} → P(<={goles_necesarios})={prob_under_pct}%"
                     ),
                 ))
 
@@ -578,7 +588,7 @@ class MotorProbabilistico:
             # Home handicap
             effective_home = home_goals + handicap_line
             margin_home = effective_home - away_goals + home_xg - away_xg
-            prob_home_hc = 1.0 / (1.0 + 2.71828 ** (-margin_home * 1.5))
+            prob_home_hc = 1.0 / (1.0 + math.exp(-margin_home * 1.5))
             hc_pct = round(prob_home_hc * 100, 2)
             if hc_pct >= UMBRAL_PROBABILIDAD:
                 sign = "+" if handicap_line > 0 else ""
@@ -595,7 +605,7 @@ class MotorProbabilistico:
             # Away handicap
             effective_away = away_goals + handicap_line
             margin_away = effective_away - home_goals + away_xg - home_xg
-            prob_away_hc = 1.0 / (1.0 + 2.71828 ** (-margin_away * 1.5))
+            prob_away_hc = 1.0 / (1.0 + math.exp(-margin_away * 1.5))
             hc_pct_a = round(prob_away_hc * 100, 2)
             if hc_pct_a >= UMBRAL_PROBABILIDAD:
                 sign = "+" if handicap_line > 0 else ""
@@ -762,9 +772,20 @@ class BuscadorMercados:
             for stat in stats_by_match.get(p.match_id, []):
                 type_code = int(stat.get("type", 0))
                 type_name = STATS_TYPE_CODES.get(type_code, f"stat_{type_code}")
+                # La API devuelve los valores como strings; convertir a float
+                raw_home = stat.get("home", 0)
+                raw_away = stat.get("away", 0)
+                try:
+                    val_home = float(raw_home)
+                except (ValueError, TypeError):
+                    val_home = 0.0
+                try:
+                    val_away = float(raw_away)
+                except (ValueError, TypeError):
+                    val_away = 0.0
                 p.stats[type_name] = {
-                    "home": stat.get("home", 0),
-                    "away": stat.get("away", 0),
+                    "home": val_home,
+                    "away": val_away,
                 }
 
     def ejecutar(self) -> str:
@@ -859,7 +880,7 @@ class BuscadorMercados:
                 f"| Campo | Valor |",
                 f"|-------|-------|",
                 f"| **Liga** | {h['liga']} |",
-                f"| **Minuto / Estado** | {h['minuto']}\' — {h['estado']} |",
+                f"| **Minuto / Estado** | {h['minuto']}' — {h['estado']} |",
                 f"| **Marcador** | {h['marcador']} |",
                 f"| **Mercado** | {h['mercado']} |",
                 f"| **Selección** | `{h['seleccion']}` |",
