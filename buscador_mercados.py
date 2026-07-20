@@ -15,11 +15,6 @@ Variables de entorno:
     TELEGRAM_BOT_TOKEN  →  Token del bot de Telegram
     TELEGRAM_CHAT_ID    →  ID del chat/canal de destino
 
-Endpoints utilizados (documentados oficialmente):
-    • /sport/football/livescores          → Partidos en vivo
-    • /sport/football/stats               → Estadísticas técnicas en vivo
-    • /sport/football/schedule/basic      → Calendario básico (fallback)
-
 Autor: Generado por IA especializada en datos deportivos
 Fecha: 2026-07-20
 """
@@ -53,13 +48,8 @@ MIRROR_URL: str = "http://api2.isportsapi.com"
 OUTPUT_MD: str = "partidos_alta_probabilidad.md"
 TELEGRAM_API_URL: str = "https://api.telegram.org/bot{token}/sendMessage"
 
-# Umbral de filtro de seguridad estricto (>= 85%)
 UMBRAL_PROBABILIDAD: float = 85.0
-
-# Cantidad de mercados TOP a enviar por Telegram
 TOP_N_TELEGRAM: int = 5
-
-# Rate-limit oficial iSportsAPI: 1 llamada cada 10 s
 RATE_LIMIT_SECONDS: int = 10
 REQUEST_TIMEOUT: int = 30
 
@@ -211,9 +201,14 @@ class TelegramNotifier:
         if not self.enabled:
             logger.warning("Telegram no configurado. No se enviarán notificaciones.")
 
-    def _escape_md(self, text: str) -> str:
-        """Escapa caracteres especiales de MarkdownV2 de Telegram."""
-        chars = r"_[]()~`>#+-=|{}.!"
+    @staticmethod
+    def _escape_md(text: str) -> str:
+        """
+        Escapa caracteres especiales de MarkdownV2 de Telegram.
+        Caracteres que DEBEN escaparse según la API oficial de Telegram:
+        _ * [ ] ( ) ~ ` > # + - = | { } . !
+        """
+        chars = r"_*[]()~`>#+-=|{}.!"
         for ch in chars:
             text = text.replace(ch, f"\\{ch}")
         return text
@@ -245,19 +240,28 @@ class TelegramNotifier:
             bar_len = int(prob / 10)
             bar = "█" * bar_len + "░" * (10 - bar_len)
 
+            # Truncar nombres largos para evitar mensajes excesivos
+            partido = h['partido'][:50] + "..." if len(h['partido']) > 50 else h['partido']
+            liga = h['liga'][:30] + "..." if len(h['liga']) > 30 else h['liga']
+
             lines.append(
-                f"{emoji} *{self._escape_md(h['mercado'])}* \u002D `{self._escape_md(h['seleccion'])}`"
+                f"{emoji} *{self._escape_md(h['mercado'])}* \\- `{self._escape_md(h['seleccion'])}`"
             )
             lines.append(f"   🏆 *{prob}%* {bar}")
-            lines.append(f"   ⚽ {self._escape_md(h['partido'])}")
-            lines.append(f"   📊 {self._escape_md(h['liga'])} | {h['minuto']}' | {h['marcador']}")
+            lines.append(f"   ⚽ {self._escape_md(partido)}")
+            lines.append(f"   📊 {self._escape_md(liga)} | {h['minuto']}' | {h['marcador']}")
             lines.append("")
 
-        lines.append("─" * 30)
+        lines.append("\\-\\-" + "-" * 28)
         lines.append("🔔 Umbral mínimo: ≥ 85% probabilidad matemática")
         lines.append("📡 Fuente: iSportsAPI en tiempo real")
 
         mensaje = "\n".join(lines)
+
+        # Verificar límite de longitud de Telegram (4096 caracteres)
+        if len(mensaje) > 4000:
+            logger.warning(f"Mensaje Telegram muy largo ({len(mensaje)} chars), truncando...")
+            mensaje = mensaje[:4000] + "\n\n... (mensaje truncado)"
 
         url = TELEGRAM_API_URL.format(token=self.bot_token)
         payload = {
@@ -275,8 +279,11 @@ class TelegramNotifier:
                 logger.info(f"✅ Telegram: mensaje enviado (msg_id={result['result']['message_id']})")
                 return True
             else:
-                logger.error(f"❌ Telegram error: {result}")
+                logger.error(f"❌ Telegram API error: {result}")
                 return False
+        except requests.exceptions.HTTPError as exc:
+            logger.error(f"❌ Telegram HTTP error {exc.response.status_code}: {exc.response.text}")
+            return False
         except Exception as exc:
             logger.error(f"❌ Error enviando a Telegram: {exc}")
             return False
@@ -686,7 +693,6 @@ class BuscadorMercados:
 
         logger.info(f"    → {len(hallazgos)} mercados superan el umbral de {UMBRAL_PROBABILIDAD}%.")
 
-        # ── ENVIAR TOP 5 A TELEGRAM ──────────────────────────────────────────
         logger.info("[4.5/5] Enviando TOP 5 a Telegram...")
         self.telegram.enviar_top_mercados(hallazgos)
 
