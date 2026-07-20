@@ -2,7 +2,10 @@ name: Buscador de Mercados de Alta Probabilidad
 
 on:
   schedule:
-    - cron: '0 5 * * *'
+    # Se ejecuta al minuto 0 de cada 2 horas (ej. 00:00, 02:00, 04:00...)
+    - cron: '0 */2 * * *'
+
+  # Permite ejecución manual desde la interfaz web de GitHub (incluida móvil)
   workflow_dispatch:
 
 permissions:
@@ -14,22 +17,34 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      # ─────────────────────────────────────────────────────────────────────
+      # 1. Clonar el repositorio
+      # ─────────────────────────────────────────────────────────────────────
       - name: Checkout del repositorio
         uses: actions/checkout@v4
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           fetch-depth: 0
 
+      # ─────────────────────────────────────────────────────────────────────
+      # 2. Configurar Python 3.11
+      # ─────────────────────────────────────────────────────────────────────
       - name: Configurar Python 3.11
         uses: actions/setup-python@v5
         with:
           python-version: '3.11'
 
+      # ─────────────────────────────────────────────────────────────────────
+      # 3. Instalar dependencias (incluye python-telegram-bot)
+      # ─────────────────────────────────────────────────────────────────────
       - name: Instalar dependencias de Python
         run: |
           python -m pip install --upgrade pip
-          pip install requests python-dotenv
+          pip install requests python-dotenv python-telegram-bot
 
+      # ─────────────────────────────────────────────────────────────────────
+      # 4. Ejecutar el script de búsqueda de mercados
+      # ─────────────────────────────────────────────────────────────────────
       - name: Ejecutar buscador_mercados.py
         env:
           YOUR_API_KEY: ${{ secrets.YOUR_API_KEY }}
@@ -38,15 +53,20 @@ jobs:
         run: |
           python buscador_mercados.py
 
+      # ─────────────────────────────────────────────────────────────────────
+      # 5. Configurar Git
+      # ─────────────────────────────────────────────────────────────────────
       - name: Configurar Git
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
-      - name: Commit y Push de cambios
+      # ─────────────────────────────────────────────────────────────────────
+      # 6. Agregar, commitear y pushear (detecta archivos nuevos y modificados)
+      # ─────────────────────────────────────────────────────────────────────
+      - name: Commit y Push de partidos_alta_probabilidad.md
         run: |
           git add partidos_alta_probabilidad.md
-          # Verificar si hay cambios staged (incluye archivos nuevos)
           if git diff --cached --quiet; then
             echo "No hay cambios para commitear."
           else
