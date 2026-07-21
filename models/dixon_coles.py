@@ -5,9 +5,11 @@ dixon_coles.py
 Modelo estadístico Dixon-Coles calibrado exclusivamente con métricas In-Play de iSportsAPI.
 """
 
+from typing import Any, Dict, Tuple
+
 import numpy as np
 import scipy.stats as stats
-from typing import Tuple, Dict, Any
+
 
 class DixonColesModel:
     def __init__(self, rho: float = -0.13):
@@ -26,11 +28,11 @@ class DixonColesModel:
         return 1.0
 
     def calcular_xg_restante_isports(
-        self, 
-        stats_live: Dict[str, Dict[str, float]], 
-        minuto: int, 
+        self,
+        stats_live: Dict[str, Dict[str, float]],
+        minuto: int,
         home_red: int,
-        away_red: int
+        away_red: int,
     ) -> Tuple[float, float]:
         """
         Calcula el xG proyectado para los minutos restantes basándose UNICAMENTE
@@ -38,7 +40,7 @@ class DixonColesModel:
         """
         minuto_actual = max(1, minuto)
         minutos_restantes = max(0, 90 - minuto_actual)
-        
+
         if minutos_restantes <= 0:
             return 0.0, 0.0
 
@@ -53,21 +55,21 @@ class DixonColesModel:
         # - Tiros fuera de área/puerta: 0.04 xG
         # - Ataques peligrosos: 0.015 xG
         # - Tiros de esquina: 0.03 xG
-        
+
         xg_acumulado_home = (
-            (_get_stat("tiros_puerta", "home") * 0.30) +
-            (_get_stat("tiros_dentro_area", "home") * 0.15) +
-            (_get_stat("tiros_fuera", "home") * 0.04) +
-            (_get_stat("ataques_peligrosos", "home") * 0.015) +
-            (_get_stat("corners", "home") * 0.03)
+            (_get_stat("tiros_puerta", "home") * 0.30)
+            + (_get_stat("tiros_dentro_area", "home") * 0.15)
+            + (_get_stat("tiros_fuera", "home") * 0.04)
+            + (_get_stat("ataques_peligrosos", "home") * 0.015)
+            + (_get_stat("corners", "home") * 0.03)
         )
 
         xg_acumulado_away = (
-            (_get_stat("tiros_puerta", "away") * 0.30) +
-            (_get_stat("tiros_dentro_area", "away") * 0.15) +
-            (_get_stat("tiros_fuera", "away") * 0.04) +
-            (_get_stat("ataques_peligrosos", "away") * 0.015) +
-            (_get_stat("corners", "away") * 0.03)
+            (_get_stat("tiros_puerta", "away") * 0.30)
+            + (_get_stat("tiros_dentro_area", "away") * 0.15)
+            + (_get_stat("tiros_fuera", "away") * 0.04)
+            + (_get_stat("ataques_peligrosos", "away") * 0.015)
+            + (_get_stat("corners", "away") * 0.03)
         )
 
         # 2. Ritmo por minuto (Tasa xG/minuto real generada en el partido actual)
@@ -80,12 +82,16 @@ class DixonColesModel:
         factor_roja_away = 1.0 - (0.25 * away_red) + (0.15 * home_red)
 
         # 4. Cálculo de Lambda / Mu para el tiempo restante
-        lambda_h = max(0.01, ritmo_xg_home * minutos_restantes * max(0.2, factor_roja_home))
+        lambda_h = max(
+            0.01, ritmo_xg_home * minutos_restantes * max(0.2, factor_roja_home)
+        )
         mu_a = max(0.01, ritmo_xg_away * minutos_restantes * max(0.2, factor_roja_away))
 
         return min(3.5, lambda_h), min(3.5, mu_a)
 
-    def evaluar_probabilidad_over(self, goles_actuales: int, linea: float, lambda_h: float, mu_a: float) -> float:
+    def evaluar_probabilidad_over(
+        self, goles_actuales: int, linea: float, lambda_h: float, mu_a: float
+    ) -> float:
         """Matriz de probabilidad Dixon-Coles basada en Poisson Modificado."""
         goles_necesarios = int(np.ceil(linea - goles_actuales))
         if goles_necesarios <= 0:
