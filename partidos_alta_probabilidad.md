@@ -1,13 +1,27 @@
 # 🎯 Partidos de Alta Probabilidad — iSportsAPI
 
-> **Generado:** `2026-07-21 15:57:33`  
+> **Generado:** `2026-07-21 20:40:36`  
 > **Fuente:** iSportsAPI (http://api.isportsapi.com)  
 > **Umbral de filtro:** ≥ 85.0%  
-> **Mostrando:** top 50 de 2654 hallazgos
+> **Mostrando:** top 50 de 2392 hallazgos
 
 ---
 
-## 1. Deportivo Santani vs Club Fernando de la Mora
+## 1. SK Treibach vs SGA Sirnitz
+
+| Campo | Valor |
+|-------|-------|
+| **Liga** | International Club Friendly |
+| **Minuto / Estado** | 90' — No iniciado |
+| **Marcador** | 12-0 |
+| **Mercado** | Doble Oportunidad |
+| **Selección** | `12` |
+| **Probabilidad** | **105.0%** █████████████████████ |
+| **Razonamiento** | Sin empate, momentum=6.00 |
+
+---
+
+## 2. Deportivo Santani vs Club Fernando de la Mora
 
 | Campo | Valor |
 |-------|-------|
@@ -21,7 +35,7 @@
 
 ---
 
-## 2. Deportivo Santani vs Club Fernando de la Mora
+## 3. Deportivo Santani vs Club Fernando de la Mora
 
 | Campo | Valor |
 |-------|-------|
@@ -35,7 +49,7 @@
 
 ---
 
-## 3. Deportivo Santani vs Club Fernando de la Mora
+## 4. Deportivo Santani vs Club Fernando de la Mora
 
 | Campo | Valor |
 |-------|-------|
@@ -49,7 +63,7 @@
 
 ---
 
-## 4. Deportivo Santani vs Club Fernando de la Mora
+## 5. Deportivo Santani vs Club Fernando de la Mora
 
 | Campo | Valor |
 |-------|-------|
@@ -63,7 +77,7 @@
 
 ---
 
-## 5. FC Tokyo vs Nagoya Grampus
+## 6. FC Tokyo vs Nagoya Grampus
 
 | Campo | Valor |
 |-------|-------|
@@ -77,7 +91,7 @@
 
 ---
 
-## 6. FC Tokyo vs Nagoya Grampus
+## 7. FC Tokyo vs Nagoya Grampus
 
 | Campo | Valor |
 |-------|-------|
@@ -91,7 +105,7 @@
 
 ---
 
-## 7. FC Tokyo vs Nagoya Grampus
+## 8. FC Tokyo vs Nagoya Grampus
 
 | Campo | Valor |
 |-------|-------|
@@ -105,7 +119,7 @@
 
 ---
 
-## 8. Urawa Red Diamonds vs Fujieda MYFC
+## 9. Urawa Red Diamonds vs Fujieda MYFC
 
 | Campo | Valor |
 |-------|-------|
@@ -119,7 +133,7 @@
 
 ---
 
-## 9. Canberra Juventus U23 vs Canberra Croatia FC U23
+## 10. Canberra Juventus U23 vs Canberra Croatia FC U23
 
 | Campo | Valor |
 |-------|-------|
@@ -133,7 +147,7 @@
 
 ---
 
-## 10. Canberra Juventus U23 vs Canberra Croatia FC U23
+## 11. Canberra Juventus U23 vs Canberra Croatia FC U23
 
 | Campo | Valor |
 |-------|-------|
@@ -144,20 +158,6 @@
 | **Selección** | `Over 1.5` |
 | **Probabilidad** | **100.0%** ████████████████████ |
 | **Razonamiento** | xG=5.81, goles=3 |
-
----
-
-## 11. Dalian Kewei vs Beijing Guoan
-
-| Campo | Valor |
-|-------|-------|
-| **Liga** | Chinese FA Cup |
-| **Minuto / Estado** | 90' — No iniciado |
-| **Marcador** | 1-2 |
-| **Mercado** | Over/Under 0.5 Goles |
-| **Selección** | `Over 0.5` |
-| **Probabilidad** | **100.0%** ████████████████████ |
-| **Razonamiento** | xG=5.61, goles=3 |
 
 ---
 
@@ -168,6 +168,20 @@
 | **Liga** | Chinese FA Cup |
 | **Minuto / Estado** | 90' — No iniciado |
 | **Marcador** | 1-2 |
+| **Mercado** | Over/Under 0.5 Goles |
+| **Selección** | `Over 0.5` |
+| **Probabilidad** | **100.0%** ████████████████████ |
+| **Razonamiento** | xG=5.61, goles=3 |
+
+---
+
+## 13. Dalian Kewei vs Beijing Guoan
+
+| Campo | Valor |
+|-------|-------|
+| **Liga** | Chinese FA Cup |
+| **Minuto / Estado** | 90' — No iniciado |
+| **Marcador** | 1-2 |
 | **Mercado** | Over/Under 1.5 Goles |
 | **Selección** | `Over 1.5` |
 | **Probabilidad** | **100.0%** ████████████████████ |
@@ -175,7 +189,7 @@
 
 ---
 
-## 13. Real MurciaU20 vs Al Ain SCC U23
+## 14. Real MurciaU20 vs Al Ain SCC U23
 
 | Campo | Valor |
 |-------|-------|
@@ -189,7 +203,7 @@
 
 ---
 
-## 14. Real MurciaU20 vs Al Ain SCC U23
+## 15. Real MurciaU20 vs Al Ain SCC U23
 
 | Campo | Valor |
 |-------|-------|
@@ -203,7 +217,7 @@
 
 ---
 
-## 15. Real MurciaU20 vs Al Ain SCC U23
+## 16. Real MurciaU20 vs Al Ain SCC U23
 
 | Campo | Valor |
 |-------|-------|
@@ -217,7 +231,7 @@
 
 ---
 
-## 16. Real MurciaU20 vs Al Ain SCC U23
+## 17. Real MurciaU20 vs Al Ain SCC U23
 
 | Campo | Valor |
 |-------|-------|
@@ -231,7 +245,7 @@
 
 ---
 
-## 17. Real MurciaU20 vs Al Ain SCC U23
+## 18. Real MurciaU20 vs Al Ain SCC U23
 
 | Campo | Valor |
 |-------|-------|
@@ -245,7 +259,7 @@
 
 ---
 
-## 18. UKM FC vs UniSZA
+## 19. UKM FC vs UniSZA
 
 | Campo | Valor |
 |-------|-------|
@@ -254,20 +268,6 @@
 | **Marcador** | 2-1 |
 | **Mercado** | Over/Under 0.5 Goles |
 | **Selección** | `Over 0.5` |
-| **Probabilidad** | **100.0%** ████████████████████ |
-| **Razonamiento** | xG=11.06, goles=3 |
-
----
-
-## 19. UKM FC vs UniSZA
-
-| Campo | Valor |
-|-------|-------|
-| **Liga** | Malaysia University League |
-| **Minuto / Estado** | 90' — No iniciado |
-| **Marcador** | 2-1 |
-| **Mercado** | Over/Under 1.5 Goles |
-| **Selección** | `Over 1.5` |
 | **Probabilidad** | **100.0%** ████████████████████ |
 | **Razonamiento** | xG=11.06, goles=3 |
 
@@ -280,6 +280,20 @@
 | **Liga** | Malaysia University League |
 | **Minuto / Estado** | 90' — No iniciado |
 | **Marcador** | 2-1 |
+| **Mercado** | Over/Under 1.5 Goles |
+| **Selección** | `Over 1.5` |
+| **Probabilidad** | **100.0%** ████████████████████ |
+| **Razonamiento** | xG=11.06, goles=3 |
+
+---
+
+## 21. UKM FC vs UniSZA
+
+| Campo | Valor |
+|-------|-------|
+| **Liga** | Malaysia University League |
+| **Minuto / Estado** | 90' — No iniciado |
+| **Marcador** | 2-1 |
 | **Mercado** | Over/Under 2.5 Goles |
 | **Selección** | `Over 2.5` |
 | **Probabilidad** | **100.0%** ████████████████████ |
@@ -287,7 +301,7 @@
 
 ---
 
-## 21. UKM FC vs UniSZA
+## 22. UKM FC vs UniSZA
 
 | Campo | Valor |
 |-------|-------|
@@ -301,7 +315,7 @@
 
 ---
 
-## 22. NK Brinje Grosuplje vs FK Epitsentr Dunayivtsi
+## 23. NK Brinje Grosuplje vs FK Epitsentr Dunayivtsi
 
 | Campo | Valor |
 |-------|-------|
@@ -310,20 +324,6 @@
 | **Marcador** | 2-3 |
 | **Mercado** | Over/Under 0.5 Goles |
 | **Selección** | `Over 0.5` |
-| **Probabilidad** | **100.0%** ████████████████████ |
-| **Razonamiento** | xG=1.34, goles=5 |
-
----
-
-## 23. NK Brinje Grosuplje vs FK Epitsentr Dunayivtsi
-
-| Campo | Valor |
-|-------|-------|
-| **Liga** | International Club Friendly |
-| **Minuto / Estado** | 90' — No iniciado |
-| **Marcador** | 2-3 |
-| **Mercado** | Over/Under 1.5 Goles |
-| **Selección** | `Over 1.5` |
 | **Probabilidad** | **100.0%** ████████████████████ |
 | **Razonamiento** | xG=1.34, goles=5 |
 
@@ -336,6 +336,20 @@
 | **Liga** | International Club Friendly |
 | **Minuto / Estado** | 90' — No iniciado |
 | **Marcador** | 2-3 |
+| **Mercado** | Over/Under 1.5 Goles |
+| **Selección** | `Over 1.5` |
+| **Probabilidad** | **100.0%** ████████████████████ |
+| **Razonamiento** | xG=1.34, goles=5 |
+
+---
+
+## 25. NK Brinje Grosuplje vs FK Epitsentr Dunayivtsi
+
+| Campo | Valor |
+|-------|-------|
+| **Liga** | International Club Friendly |
+| **Minuto / Estado** | 90' — No iniciado |
+| **Marcador** | 2-3 |
 | **Mercado** | Over/Under 2.5 Goles |
 | **Selección** | `Over 2.5` |
 | **Probabilidad** | **100.0%** ████████████████████ |
@@ -343,7 +357,7 @@
 
 ---
 
-## 25. NK Brinje Grosuplje vs FK Epitsentr Dunayivtsi
+## 26. NK Brinje Grosuplje vs FK Epitsentr Dunayivtsi
 
 | Campo | Valor |
 |-------|-------|
@@ -357,7 +371,7 @@
 
 ---
 
-## 26. Canberra Juventus vs Canberra FC
+## 27. Canberra Juventus vs Canberra FC
 
 | Campo | Valor |
 |-------|-------|
@@ -371,7 +385,7 @@
 
 ---
 
-## 27. Canberra Juventus vs Canberra FC
+## 28. Canberra Juventus vs Canberra FC
 
 | Campo | Valor |
 |-------|-------|
@@ -385,7 +399,7 @@
 
 ---
 
-## 28. Canberra Juventus vs Canberra FC
+## 29. Canberra Juventus vs Canberra FC
 
 | Campo | Valor |
 |-------|-------|
@@ -399,7 +413,7 @@
 
 ---
 
-## 29. Canberra Juventus vs Canberra FC
+## 30. Canberra Juventus vs Canberra FC
 
 | Campo | Valor |
 |-------|-------|
@@ -413,7 +427,7 @@
 
 ---
 
-## 30. Canberra Juventus vs Canberra FC
+## 31. Canberra Juventus vs Canberra FC
 
 | Campo | Valor |
 |-------|-------|
@@ -427,7 +441,7 @@
 
 ---
 
-## 31. Canberra Juventus vs Canberra FC
+## 32. Canberra Juventus vs Canberra FC
 
 | Campo | Valor |
 |-------|-------|
@@ -441,7 +455,7 @@
 
 ---
 
-## 32. Canberra Juventus vs Canberra FC
+## 33. Canberra Juventus vs Canberra FC
 
 | Campo | Valor |
 |-------|-------|
@@ -455,7 +469,7 @@
 
 ---
 
-## 33. Queensland Lions SC vs Perth Glory
+## 34. Queensland Lions SC vs Perth Glory
 
 | Campo | Valor |
 |-------|-------|
@@ -469,7 +483,7 @@
 
 ---
 
-## 34. Queensland Lions SC vs Perth Glory
+## 35. Queensland Lions SC vs Perth Glory
 
 | Campo | Valor |
 |-------|-------|
@@ -480,20 +494,6 @@
 | **Selección** | `Over 1.5` |
 | **Probabilidad** | **100.0%** ████████████████████ |
 | **Razonamiento** | xG=12.90, goles=0 |
-
----
-
-## 35. Preston Lions vs Newcastle Jets
-
-| Campo | Valor |
-|-------|-------|
-| **Liga** | Australia Cup |
-| **Minuto / Estado** | 90' — No iniciado |
-| **Marcador** | 3-2 |
-| **Mercado** | Over/Under 0.5 Goles |
-| **Selección** | `Over 0.5` |
-| **Probabilidad** | **100.0%** ████████████████████ |
-| **Razonamiento** | xG=12.28, goles=5 |
 
 ---
 
@@ -504,8 +504,8 @@
 | **Liga** | Australia Cup |
 | **Minuto / Estado** | 90' — No iniciado |
 | **Marcador** | 3-2 |
-| **Mercado** | Over/Under 1.5 Goles |
-| **Selección** | `Over 1.5` |
+| **Mercado** | Over/Under 0.5 Goles |
+| **Selección** | `Over 0.5` |
 | **Probabilidad** | **100.0%** ████████████████████ |
 | **Razonamiento** | xG=12.28, goles=5 |
 
@@ -518,8 +518,8 @@
 | **Liga** | Australia Cup |
 | **Minuto / Estado** | 90' — No iniciado |
 | **Marcador** | 3-2 |
-| **Mercado** | Over/Under 2.5 Goles |
-| **Selección** | `Over 2.5` |
+| **Mercado** | Over/Under 1.5 Goles |
+| **Selección** | `Over 1.5` |
 | **Probabilidad** | **100.0%** ████████████████████ |
 | **Razonamiento** | xG=12.28, goles=5 |
 
@@ -532,6 +532,20 @@
 | **Liga** | Australia Cup |
 | **Minuto / Estado** | 90' — No iniciado |
 | **Marcador** | 3-2 |
+| **Mercado** | Over/Under 2.5 Goles |
+| **Selección** | `Over 2.5` |
+| **Probabilidad** | **100.0%** ████████████████████ |
+| **Razonamiento** | xG=12.28, goles=5 |
+
+---
+
+## 39. Preston Lions vs Newcastle Jets
+
+| Campo | Valor |
+|-------|-------|
+| **Liga** | Australia Cup |
+| **Minuto / Estado** | 90' — No iniciado |
+| **Marcador** | 3-2 |
 | **Mercado** | Over/Under 3.5 Goles |
 | **Selección** | `Over 3.5` |
 | **Probabilidad** | **100.0%** ████████████████████ |
@@ -539,7 +553,7 @@
 
 ---
 
-## 39. Preston Lions vs Newcastle Jets
+## 40. Preston Lions vs Newcastle Jets
 
 | Campo | Valor |
 |-------|-------|
@@ -553,7 +567,7 @@
 
 ---
 
-## 40. Calcutta Customs vs Patha Chakra
+## 41. Calcutta Customs vs Patha Chakra
 
 | Campo | Valor |
 |-------|-------|
@@ -567,7 +581,7 @@
 
 ---
 
-## 41. Calcutta Customs vs Patha Chakra
+## 42. Calcutta Customs vs Patha Chakra
 
 | Campo | Valor |
 |-------|-------|
@@ -581,7 +595,7 @@
 
 ---
 
-## 42. Calcutta Customs vs Patha Chakra
+## 43. Calcutta Customs vs Patha Chakra
 
 | Campo | Valor |
 |-------|-------|
@@ -595,7 +609,7 @@
 
 ---
 
-## 43. Calcutta Customs vs Patha Chakra
+## 44. Calcutta Customs vs Patha Chakra
 
 | Campo | Valor |
 |-------|-------|
@@ -609,7 +623,7 @@
 
 ---
 
-## 44. Calcutta Customs vs Patha Chakra
+## 45. Calcutta Customs vs Patha Chakra
 
 | Campo | Valor |
 |-------|-------|
@@ -623,7 +637,7 @@
 
 ---
 
-## 45. Cumberland United FC vs Heidelberg United
+## 46. Cumberland United FC vs Heidelberg United
 
 | Campo | Valor |
 |-------|-------|
@@ -637,7 +651,7 @@
 
 ---
 
-## 46. Cumberland United FC vs Heidelberg United
+## 47. Cumberland United FC vs Heidelberg United
 
 | Campo | Valor |
 |-------|-------|
@@ -651,7 +665,7 @@
 
 ---
 
-## 47. Cumberland United FC vs Heidelberg United
+## 48. Cumberland United FC vs Heidelberg United
 
 | Campo | Valor |
 |-------|-------|
@@ -665,7 +679,7 @@
 
 ---
 
-## 48. Cumberland United FC vs Heidelberg United
+## 49. Cumberland United FC vs Heidelberg United
 
 | Campo | Valor |
 |-------|-------|
@@ -679,7 +693,7 @@
 
 ---
 
-## 49. Cumberland United FC vs Heidelberg United
+## 50. Cumberland United FC vs Heidelberg United
 
 | Campo | Valor |
 |-------|-------|
@@ -690,19 +704,5 @@
 | **Selección** | `Away +0.5` |
 | **Probabilidad** | **100.0%** ████████████████████ |
 | **Razonamiento** | margin=8.65 |
-
----
-
-## 50. Cumberland United FC vs Heidelberg United
-
-| Campo | Valor |
-|-------|-------|
-| **Liga** | Australia Cup |
-| **Minuto / Estado** | 90' — No iniciado |
-| **Marcador** | 0-3 |
-| **Mercado** | Hándicap Asiático (+1.5) |
-| **Selección** | `Away +1.5` |
-| **Probabilidad** | **100.0%** ████████████████████ |
-| **Razonamiento** | margin=9.65 |
 
 ---
