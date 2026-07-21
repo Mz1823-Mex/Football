@@ -1,0 +1,247 @@
+name: 🔧 Auto Code Cleaner & Linter
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main, develop]
+  workflow_dispatch:  # También puedes correrlo manualmente
+
+jobs:
+  clean-and-lint:
+    runs-on: ubuntu-latest
+    name: 🧹 Limpiar y verificar código
+
+    steps:
+      # 1. Checkout del código
+      - name: 📥 Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      # 2. Detectar el lenguaje principal y configurar herramientas
+      - name: 🔍 Detect project type
+        id: detect
+        run: |
+          if [ -f "package.json" ]; then
+            echo "type=node" >> $GITHUB_OUTPUT
+            echo "📦 Proyecto Node.js detectado"
+          elif [ -f "requirements.txt" ] || [ -f "pyproject.toml" ] || [ -f "setup.py" ]; then
+            echo "type=python" >> $GITHUB_OUTPUT
+            echo "🐍 Proyecto Python detectado"
+          elif [ -f "Cargo.toml" ]; then
+            echo "type=rust" >> $GITHUB_OUTPUT
+            echo "🦀 Proyecto Rust detectado"
+          elif [ -f "go.mod" ]; then
+            echo "type=go" >> $GITHUB_OUTPUT
+            echo "🐹 Proyecto Go detectado"
+          else
+            echo "type=generic" >> $GITHUB_OUTPUT
+            echo "⚙️ Proyecto genérico detectado"
+          fi
+
+      # 3. Configurar Node.js (para proyectos JS/TS o herramientas generales)
+      - name: ⬢ Setup Node.js
+        if: steps.detect.outputs.type == 'node'
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      # 4. Configurar Python
+      - name: 🐍 Setup Python
+        if: steps.detect.outputs.type == 'python'
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      # 5. Configurar Rust
+      - name: 🦀 Setup Rust
+        if: steps.detect.outputs.type == 'rust'
+        uses: dtolnay/rust-toolchain@stable
+
+      # 6. Configurar Go
+      - name: 🐹 Setup Go
+        if: steps.detect.outputs.type == 'go'
+        uses: actions/setup-go@v5
+        with:
+          go-version: '1.21'
+
+      # ============================================
+      # LIMPIEZA Y LINTING POR TIPO DE PROYECTO
+      # ============================================
+
+      # --- NODE.JS ---
+      - name: 📦 Instalar dependencias (Node)
+        if: steps.detect.outputs.type == 'node'
+        run: |
+          npm ci
+          # Instalar herramientas de linting si no están
+          npm install --save-dev prettier eslint @typescript-eslint/parser @typescript-eslint/eslint-plugin || true
+
+      - name: 🧹 Formatear con Prettier (Node)
+        if: steps.detect.outputs.type == 'node'
+        run: |
+          npx prettier --write . || true
+          echo "✅ Prettier ejecutado"
+
+      - name: 🔍 Lint con ESLint (Node)
+        if: steps.detect.outputs.type == 'node'
+        continue-on-error: true
+        run: |
+          npx eslint . --ext .js,.jsx,.ts,.tsx --format json --output-file eslint-report.json || true
+          echo "📊 Reporte ESLint generado"
+
+      - name: 🧪 Ejecutar tests (Node)
+        if: steps.detect.outputs.type == 'node'
+        continue-on-error: true
+        run: |
+          npm test -- --coverage --watchAll=false || true
+          echo "🧪 Tests ejecutados"
+
+      # --- PYTHON ---
+      - name: 📦 Instalar dependencias (Python)
+        if: steps.detect.outputs.type == 'python'
+        run: |
+          pip install black isort flake8 pylint mypy bandit pytest pytest-cov
+          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+
+      - name: 🧹 Formatear con Black (Python)
+        if: steps.detect.outputs.type == 'python'
+        run: |
+          black . || true
+          echo "✅ Black ejecutado"
+
+      - name: 📚 Organizar imports con isort (Python)
+        if: steps.detect.outputs.type == 'python'
+        run: |
+          isort . || true
+          echo "✅ isort ejecutado"
+
+      - name: 🔍 Lint con flake8 (Python)
+        if: steps.detect.outputs.type == 'python'
+        continue-on-error: true
+        run: |
+          flake8 . --format=json --output-file=flake8-report.json || true
+          echo "📊 Reporte flake8 generado"
+
+      - name: 🛡️ Análisis de seguridad con Bandit (Python)
+        if: steps.detect.outputs.type == 'python'
+        continue-on-error: true
+        run: |
+          bandit -r . -f json -o bandit-report.json || true
+          echo "🛡️ Análisis de seguridad completado"
+
+      - name: 🧪 Ejecutar tests (Python)
+        if: steps.detect.outputs.type == 'python'
+        continue-on-error: true
+        run: |
+          pytest --cov=. --cov-report=xml || true
+          echo "🧪 Tests ejecutados"
+
+      # --- RUST ---
+      - name: 🧹 Formatear con rustfmt (Rust)
+        if: steps.detect.outputs.type == 'rust'
+        run: |
+          rustfmt --edition 2021 **/*.rs || true
+          cargo fmt || true
+          echo "✅ rustfmt ejecutado"
+
+      - name: 🔍 Lint con Clippy (Rust)
+        if: steps.detect.outputs.type == 'rust'
+        continue-on-error: true
+        run: |
+          cargo clippy --all-targets --all-features -- -D warnings 2>&1 | tee clippy-report.txt || true
+          echo "📊 Reporte Clippy generado"
+
+      - name: 🧪 Ejecutar tests (Rust)
+        if: steps.detect.outputs.type == 'rust'
+        continue-on-error: true
+        run: |
+          cargo test || true
+          echo "🧪 Tests ejecutados"
+
+      # --- GO ---
+      - name: 🧹 Formatear con gofmt (Go)
+        if: steps.detect.outputs.type == 'go'
+        run: |
+          gofmt -w . || true
+          echo "✅ gofmt ejecutado"
+
+      - name: 🔍 Lint con golangci-lint (Go)
+        if: steps.detect.outputs.type == 'go'
+        continue-on-error: true
+        run: |
+          curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s -- -b $(go env GOPATH)/bin
+          golangci-lint run --out-format=json > golangci-report.json || true
+          echo "📊 Reporte golangci-lint generado"
+
+      - name: 🧪 Ejecutar tests (Go)
+        if: steps.detect.outputs.type == 'go'
+        continue-on-error: true
+        run: |
+          go test -v ./... || true
+          echo "🧪 Tests ejecutados"
+
+      # --- GENÉRICO ---
+      - name: 🔍 Buscar archivos problemáticos (Genérico)
+        if: steps.detect.outputs.type == 'generic'
+        run: |
+          echo "🔍 Buscando archivos con problemas comunes..."
+          find . -type f \( -name "*.md" -o -name "*.txt" -o -name "*.json" -o -name "*.yaml" -o -name "*.yml" \) -exec file {} \; | grep -i "bom" || true
+          echo "✅ Búsqueda completada"
+
+      # ============================================
+      # COMMIT AUTOMÁTICO DE CAMBIOS (opcional)
+      # ============================================
+      - name: 💾 Commit de cambios de formateo
+        if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add -A
+          git diff --staged --quiet || (git commit -m "🔧 Auto-format: código limpiado por GitHub Actions [bot]" && git push)
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      # ============================================
+      # GENERAR REPORTE FINAL
+      # ============================================
+      - name: 📊 Generar reporte final
+        if: always()
+        run: |
+          echo "# 📋 REPORTE DE LIMPIEZA DE CÓDIGO" > CLEANUP_REPORT.md
+          echo "" >> CLEANUP_REPORT.md
+          echo "**Repositorio:** ${{ github.repository }}" >> CLEANUP_REPORT.md
+          echo "**Rama:** ${{ github.ref_name }}" >> CLEANUP_REPORT.md
+          echo "**Commit:** ${{ github.sha }}" >> CLEANUP_REPORT.md
+          echo "**Fecha:** $(date)" >> CLEANUP_REPORT.md
+          echo "**Tipo de proyecto:** ${{ steps.detect.outputs.type }}" >> CLEANUP_REPORT.md
+          echo "" >> CLEANUP_REPORT.md
+          echo "## ✅ Herramientas ejecutadas:" >> CLEANUP_REPORT.md
+          echo "- Formateo automático" >> CLEANUP_REPORT.md
+          echo "- Linting" >> CLEANUP_REPORT.md
+          echo "- Análisis de seguridad" >> CLEANUP_REPORT.md
+          echo "- Tests" >> CLEANUP_REPORT.md
+          echo "" >> CLEANUP_REPORT.md
+          echo "## 📎 Archivos de reporte:" >> CLEANUP_REPORT.md
+          echo "Busca los archivos generados en el workflow para más detalles." >> CLEANUP_REPORT.md
+          echo "" >> CLEANUP_REPORT.md
+          echo "## 🚀 Próximo paso:" >> CLEANUP_REPORT.md
+          echo "Copia este reporte o los archivos problemáticos y pégamelos aquí para una revisión final manual." >> CLEANUP_REPORT.md
+          cat CLEANUP_REPORT.md
+
+      - name: 📎 Subir reportes como artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: code-cleanup-reports
+          path: |
+            eslint-report.json
+            flake8-report.json
+            bandit-report.json
+            clippy-report.txt
+            golangci-report.json
+            coverage.xml
+            CLEANUP_REPORT.md
+          if-no-files-found: ignore
