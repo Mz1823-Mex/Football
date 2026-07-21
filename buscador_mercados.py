@@ -51,11 +51,12 @@ TOP_N_MARKDOWN: int = 50
 RATE_LIMIT_SECONDS: int = 10
 REQUEST_TIMEOUT: int = 30
 
+# Mapeo corregido de códigos según iSportsAPI oficial
 STATUS_CODES: Dict[int, str] = {
-    -1: "No iniciado", 0: "En calentamiento", 1: "1ª parte", 2: "Descanso",
-    3: "2ª parte", 4: "Prórroga", 5: "Penaltis", 6: "Finalizado",
-    7: "Suspendido", 8: "Interrumpido", 9: "Anulado", 10: "En espera",
-    11: "Descanso (ET)", 12: "Penaltis (ET)", 13: "Descanso (Pen)",
+    0: "No iniciado", 1: "1ª parte", 2: "Descanso", 3: "2ª parte",
+    4: "Prórroga", 5: "Penaltis", -1: "Finalizado", 7: "Cancelado",
+    8: "Pospuesto", 9: "Interrumpido", 10: "En espera", 11: "Descanso (ET)",
+    12: "Penaltis (ET)", 13: "Descanso (Pen)",
 }
 
 STATS_TYPE_CODES: Dict[int, str] = {
@@ -236,13 +237,9 @@ class TelegramNotifier:
             partido = h["partido"][:50] + "..." if len(h["partido"]) > 50 else h["partido"]
             liga = h["liga"][:30] + "..." if len(h["liga"]) > 30 else h["liga"]
 
-            lines.append(
-                f"{emoji} <b>{partido}</b>"
-            )
+            lines.append(f"{emoji} <b>{partido}</b>")
             lines.append(f"   📊 {liga} | {h['minuto']}' | {h['marcador']}")
-            lines.append(
-                f"   🏆 <b>{prob}%</b> {bar} — <code>{h['seleccion']}</code>"
-            )
+            lines.append(f"   🏆 <b>{prob}%</b> {bar} — <code>{h['seleccion']}</code>")
             lines.append(f"   🎰 {h['mercado']}")
             lines.append("")
 
@@ -271,9 +268,11 @@ class MotorProbabilistico:
 
     @staticmethod
     def _tiempo_restante(minuto: int, status: int, injury_time: int = 0) -> int:
-        if status in (6, 7, 8, 9):
+        if status in (-1, 6, 7, 8, 9):  # Finalizado o cancelado
             return 0
-        if status == 2:
+        if status == 0:  # No iniciado
+            return 90
+        if status == 2:  # Descanso
             return 45
         if status in (4, 5, 11, 12, 13):
             return 15
@@ -285,7 +284,7 @@ class MotorProbabilistico:
 
     @staticmethod
     def _factor_campo(status: int) -> float:
-        return 0.0 if status in (6, 7, 8, 9) else 0.35
+        return 0.0 if status in (-1, 6, 7, 8, 9) else 0.35
 
     @staticmethod
     def _factor_tarjetas_rojas(home_red: int, away_red: int) -> Tuple[float, float]:
@@ -360,7 +359,8 @@ class MotorProbabilistico:
         if away_xg_stats < 0.1 and partido.away_score == 0:
             away_xg_stats = 0.05 * factor_tiempo
 
-        return max(0.0, home_xg_stats), max(0.0, away_xg_stats)
+        # Capping de xG para evitar distorsiones absurdas
+        return min(3.5, max(0.0, home_xg_stats)), min(3.5, max(0.0, away_xg_stats))
 
     def evaluar_mercados(self, partido: PartidoEnVivo) -> List[MercadoProbabilidad]:
         resultados: List[MercadoProbabilidad] = []
@@ -368,7 +368,8 @@ class MotorProbabilistico:
         status = partido.status_code
         t_restante = self._tiempo_restante(minuto, status, partido.injury_time)
 
-        if t_restante <= 0:
+        # Si el partido no está iniciado o ya terminó, omitir para evitar "Data Leakage"
+        if status in (0, -1, 6, 7, 8, 9) or t_restante <= 0:
             return resultados
 
         home_xg, away_xg = self._calcular_xg_restante(partido)
@@ -381,10 +382,10 @@ class MotorProbabilistico:
         for linea in [0.5, 1.5, 2.5, 3.5, 4.5]:
             goles_necesarios = int(linea - total_goals)
             if goles_necesarios < 0:
-                prob_over, prob_under = 100.0, 0.0
+                prob_over, prob_under = 95.0, 0.0  # Cap máximo
             else:
-                prob_over = (1.0 - self._poisson_cdf(total_xg, goles_necesarios)) * 100
-                prob_under = self._poisson_cdf(total_xg, goles_necesarios) * 100
+                prob_over = min(95.0, (1.0 - self._poisson_cdf(total_xg, goles_necesarios)) * 100)
+                prob_under = min(95.0, self._poisson_cdf(total_xg, goles_necesarios) * 100)
 
             if prob_over >= UMBRAL_PROBABILIDAD:
                 resultados.append(MercadoProbabilidad(
@@ -404,8 +405,8 @@ class MotorProbabilistico:
         # 2. BTTS
         prob_home_scores = 1.0 - self._poisson_prob(home_xg, 0)
         prob_away_scores = 1.0 - self._poisson_prob(away_xg, 0)
-        prob_btts = prob_home_scores * prob_away_scores
-        prob_btts_no = 1.0 - prob_btts
+        prob_btts = min(0.95, prob_home_scores * prob_away_scores)
+        prob_btts_no = min(0.95, 1.0 - prob_btts)
 
         if prob_btts * 100 >= UMBRAL_PROBABILIDAD:
             resultados.append(MercadoProbabilidad(
@@ -431,9 +432,9 @@ class MotorProbabilistico:
         red_diff = partido.away_red - partido.home_red
         momentum = (goal_diff + red_diff * 0.5) / max(1, minuto / 45)
 
-        prob_1x = min(0.99, max(0.01, ratio_home + 0.15 + momentum * 0.1))
-        prob_x2 = min(0.99, max(0.01, ratio_away + 0.15 - momentum * 0.1))
-        prob_12 = 1.0 - (0.25 - abs(momentum) * 0.05)
+        prob_1x = min(0.95, max(0.01, ratio_home + 0.15 + momentum * 0.1))
+        prob_x2 = min(0.95, max(0.01, ratio_away + 0.15 - momentum * 0.1))
+        prob_12 = min(0.95, 1.0 - (0.25 - abs(momentum) * 0.05))
 
         for sel, prob, desc in [
             ("1X", prob_1x, "Home gana o empata"),
@@ -451,7 +452,7 @@ class MotorProbabilistico:
         for handicap_line in [-1.5, -0.5, 0.5, 1.5]:
             effective_home = home_goals + handicap_line
             margin_home = effective_home - away_goals + home_xg - away_xg
-            prob_home_hc = 1.0 / (1.0 + math.exp(-margin_home * 1.5))
+            prob_home_hc = min(0.95, 1.0 / (1.0 + math.exp(-margin_home * 1.5)))
             hc_pct = round(prob_home_hc * 100, 2)
             if hc_pct >= UMBRAL_PROBABILIDAD:
                 sign = "+" if handicap_line > 0 else ""
@@ -463,7 +464,7 @@ class MotorProbabilistico:
 
             effective_away = away_goals + handicap_line
             margin_away = effective_away - home_goals + away_xg - home_xg
-            prob_away_hc = 1.0 / (1.0 + math.exp(-margin_away * 1.5))
+            prob_away_hc = min(0.95, 1.0 / (1.0 + math.exp(-margin_away * 1.5)))
             hc_pct_a = round(prob_away_hc * 100, 2)
             if hc_pct_a >= UMBRAL_PROBABILIDAD:
                 sign = "+" if handicap_line > 0 else ""
@@ -479,7 +480,7 @@ class MotorProbabilistico:
         else:
             prob_next_home = 0.5
         prob_next_home = min(0.95, max(0.05, prob_next_home + momentum * 0.05 + red_diff * 0.03))
-        prob_next_away = 1.0 - prob_next_home
+        prob_next_away = min(0.95, 1.0 - prob_next_home)
 
         nh_pct = round(prob_next_home * 100, 2)
         na_pct = round(prob_next_away * 100, 2)
@@ -519,7 +520,7 @@ class MotorProbabilistico:
             px += (1 - tiempo_factor) * 0.10
 
         total_p = p1 + px + p2
-        p1, px, p2 = p1 / total_p, px / total_p, p2 / total_p
+        p1, px, p2 = min(0.95, p1 / total_p), min(0.95, px / total_p), min(0.95, p2 / total_p)
 
         for sel, prob, label in [
             ("1", p1, f"{partido.home_name} gana"),
@@ -561,7 +562,7 @@ class BuscadorMercados:
                 league_name=str(raw.get("leagueName", "Desconocida")),
                 home_name=str(raw.get("homeName", "Home")),
                 away_name=str(raw.get("awayName", "Away")),
-                status_code=int(raw.get("status", -1)),
+                status_code=int(raw.get("status", 0)),
                 minute=minute,
                 home_score=int(raw.get("homeScore", 0) or 0),
                 away_score=int(raw.get("awayScore", 0) or 0),
@@ -607,6 +608,16 @@ class BuscadorMercados:
                     val_away = 0.0
                 p.stats[type_name] = {"home": val_home, "away": val_away}
 
+    @staticmethod
+    def _deduplicar_y_limitar_por_partido(hallazgos: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
+        """Consolida múltiples mercados del mismo partido, quedándose con la opción de mayor probabilidad."""
+        partidos_map = {}
+        for h in hallazgos:
+            partido_key = h["partido"]
+            if partido_key not in partidos_map or h["probabilidad"] > partidos_map[partido_key]["probabilidad"]:
+                partidos_map[partido_key] = h
+        return sorted(list(partidos_map.values()), key=lambda x: x["probabilidad"], reverse=True)
+
     def ejecutar(self) -> str:
         logger.info("═" * 70)
         logger.info("INICIANDO BÚSQUEDA DE MERCADOS DE ALTA PROBABILIDAD")
@@ -624,7 +635,8 @@ class BuscadorMercados:
         partidos: List[PartidoEnVivo] = []
         for raw in livescores_raw:
             p = self._parse_livescore(raw)
-            if p:
+            # Solo evaluar partidos en vivo (status > 0)
+            if p and p.status_code in (1, 2, 3, 4, 5, 11, 12, 13):
                 partidos.append(p)
         logger.info(f"    → {len(partidos)} partidos válidos en vivo.")
 
@@ -642,12 +654,12 @@ class BuscadorMercados:
             logger.info("    → Stats no disponibles; continuando con datos básicos.")
 
         logger.info("[4/5] Ejecutando motor probabilístico...")
-        hallazgos: List[Dict[str, Any]] = []
+        hallazgos_crudos: List[Dict[str, Any]] = []
         for p in partidos:
             mercados = self.motor.evaluar_mercados(p)
             if mercados:
                 for m in mercados:
-                    hallazgos.append({
+                    hallazgos_crudos.append({
                         "partido": f"{p.home_name} vs {p.away_name}",
                         "liga": p.league_name,
                         "minuto": p.minute,
@@ -659,7 +671,10 @@ class BuscadorMercados:
                         "razonamiento": m.razonamiento,
                     })
 
-        logger.info(f"    → {len(hallazgos)} mercados superan el umbral de {UMBRAL_PROBABILIDAD}%.")
+        # Deduplicación para asegurar 1 solo resultado óptimo por partido
+        hallazgos = self._deduplicar_y_limitar_por_partido(hallazgos_crudos)
+
+        logger.info(f"    → {len(hallazgos)} partidos únicos superan el umbral de {UMBRAL_PROBABILIDAD}%.")
 
         # ── ENVIAR TOP 5 A TELEGRAM ──────────────────────────────────────────
         logger.info("[4.5/5] Enviando TOP 5 a Telegram...")
@@ -674,7 +689,7 @@ class BuscadorMercados:
         if not hallazgos:
             return self._generar_md_sin_datos()
 
-        hallazgos_ordenados = sorted(hallazgos, key=lambda x: x["probabilidad"], reverse=True)[:TOP_N_MARKDOWN]
+        hallazgos_ordenados = hallazgos[:TOP_N_MARKDOWN]
 
         lines: List[str] = [
             "# 🎯 Partidos de Alta Probabilidad — iSportsAPI",
