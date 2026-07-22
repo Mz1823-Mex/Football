@@ -1,90 +1,30 @@
-name: CI/CD Pipeline
+name: 15-Min Value Bet Scanner
 
 on:
-  push:
-    branches: [main, develop]
-  pull_request:
-    branches: [main]
-
-env:
-  PYTHON_VERSION: "3.11"
+  schedule:
+    - cron: '*/15 * * * *'  # Ejecutar cada 15 minutos
+  workflow_dispatch:      # Permitir ejecución manual
 
 jobs:
-  lint-and-typecheck:
-    name: Lint & Type Check
+  scan-and-notify:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: ${{ env.PYTHON_VERSION }}
-          cache: "pip"
-      - name: Install dependencies
-        run: |
-          pip install -e ".[dev]"
-      - name: Run Ruff
-        run: ruff check src/ tests/
-      - name: Run Ruff Format
-        run: ruff format --check src/ tests/
-      - name: Run MyPy
-        run: mypy src/
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
-  test:
-    name: Unit & Integration Tests
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: ${{ env.PYTHON_VERSION }}
-          cache: "pip"
+          python-version: '3.11'
+
       - name: Install dependencies
         run: |
-          pip install -e ".[dev]"
-      - name: Run Tests
-        run: pytest
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Run Value Bet Scanner
         env:
-          YOUR_API_KEY: "test_key"
-          TELEGRAM_BOT_TOKEN: "test_token"
-          TELEGRAM_CHAT_ID: "test_chat"
-
-  security:
-    name: Security Scan
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: ${{ env.PYTHON_VERSION }}
-      - name: Install dependencies
-        run: pip install bandit[toml]
-      - name: Run Bandit
-        run: bandit -r src/ -f json -o bandit-report.json || true
-      - name: Upload Bandit Report
-        uses: actions/upload-artifact@v4
-        with:
-          name: bandit-report
-          path: bandit-report.json
-
-  build:
-    name: Build Package
-    runs-on: ubuntu-latest
-    needs: [lint-and-typecheck, test, security]
-    steps:
-      - uses: actions/checkout@v4
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: ${{ env.PYTHON_VERSION }}
-      - name: Install build dependencies
-        run: pip install build
-      - name: Build package
-        run: python -m build
-      - name: Upload dist
-        uses: actions/upload-artifact@v4
-        with:
-          name: dist
-          path: dist/
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          # Agrega aquí otras variables necesarias como API Keys de fútbol
+        run: python buscador_mercados.py
