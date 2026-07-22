@@ -2,8 +2,8 @@ name: Buscador de Mercados de Alta Probabilidad
 
 on:
   schedule:
-    # Se ejecuta al minuto 0 de cada 2 horas (ej. 00:00, 02:00, 04:00...)
-    - cron: '0 */2 * * *'
+    # Se ejecuta al minuto 0 de cada hora (ej. 00:00, 01:00, 02:00...)
+    - cron: '0 * * * *'
 
   # Permite ejecución manual desde la interfaz web de GitHub (incluida móvil)
   workflow_dispatch:
