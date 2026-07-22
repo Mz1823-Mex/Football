@@ -16,7 +16,7 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: '3.11'
-          cache: 'pip' # Habilitar caché para acelerar ejecuciones
+          cache: 'pip'
 
       - name: Install dependencies
         run: |
@@ -26,6 +26,6 @@ jobs:
 
       - name: Run Value Bet Scanner
         env:
-          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.YOUR_API_KEY }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
         run: python buscador_mercados.py
