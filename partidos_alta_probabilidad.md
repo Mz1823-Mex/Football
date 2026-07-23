@@ -1,78 +1,18 @@
 # 🎯 Partidos de Alta Probabilidad — iSportsAPI
 
-> **Generado:** `2026-07-22 21:43:23`  
+> **Generado:** `2026-07-23 07:44:35`  
 > **Fuente:** iSportsAPI (http://api.isportsapi.com)  
-> **Umbral de filtro:** ≥ 85.0%  
-> **Mostrando:** top 5 de 5 hallazgos
+> **Umbral de filtro:** ≥ 85.0%
 
 ---
 
-## 1. San Antonio(ECU) vs Cumbaya FC
+## ⚠️ Sin mercados detectados
 
-| Campo | Valor |
-|-------|-------|
-| **Liga** | Liga Pro Ecuador Serie B |
-| **Minuto / Estado** | 73' — 2ª parte |
-| **Marcador** | 0-0 |
-| **Mercado** | Over/Under 0.5 Goles |
-| **Selección** | `Over 0.5` |
-| **Probabilidad** | **95.0%** ███████████████████░ |
-| **Razonamiento** | xG=3.61, goles=0 |
+**No se detectaron mercados de alta probabilidad en este momento.**
 
----
+Posibles causas:
+- No hay partidos en vivo actualmente.
+- Ningún partido en curso supera el umbral matemático del 85%.
+- La suscripción de iSportsAPI no incluye datos de estadísticas técnicas.
 
-## 2. Universitario de Deportes (W) vs Carlos Mannucci W
-
-| Campo | Valor |
-|-------|-------|
-| **Liga** | Peru Campeonato Nacional Women |
-| **Minuto / Estado** | 73' — 2ª parte |
-| **Marcador** | 5-0 |
-| **Mercado** | Over/Under 0.5 Goles |
-| **Selección** | `Over 0.5` |
-| **Probabilidad** | **95.0%** ███████████████████░ |
-| **Razonamiento** | xG=3.82, goles=5 |
-
----
-
-## 3. CD Castellon U19 vs Mauritania U20
-
-| Campo | Valor |
-|-------|-------|
-| **Liga** | COTIF Tournament |
-| **Minuto / Estado** | 58' — Descanso |
-| **Marcador** | 0-0 |
-| **Mercado** | Over/Under 1.5 Goles |
-| **Selección** | `Under 1.5` |
-| **Probabilidad** | **95.0%** ███████████████████░ |
-| **Razonamiento** | xG=0.31, goles=0 |
-
----
-
-## 4. Club Sport Colombia vs Guairena
-
-| Campo | Valor |
-|-------|-------|
-| **Liga** | Paraguay Cup |
-| **Minuto / Estado** | 43' — 1ª parte |
-| **Marcador** | 1-1 |
-| **Mercado** | Over/Under 0.5 Goles |
-| **Selección** | `Over 0.5` |
-| **Probabilidad** | **95.0%** ███████████████████░ |
-| **Razonamiento** | xG=2.36, goles=2 |
-
----
-
-## 5. Independiente del Valle vs Tecnico Universitario
-
-| Campo | Valor |
-|-------|-------|
-| **Liga** | Liga Pro Ecuador Serie A |
-| **Minuto / Estado** | 13' — 1ª parte |
-| **Marcador** | 0-0 |
-| **Mercado** | Over/Under 0.5 Goles |
-| **Selección** | `Over 0.5` |
-| **Probabilidad** | **95.0%** ███████████████████░ |
-| **Razonamiento** | xG=3.42, goles=0 |
-
----
+*Recomendación:* Ejecute el script nuevamente durante horarios de partidos.
