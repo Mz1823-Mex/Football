@@ -1,50 +1,36 @@
 # 🎯 Partidos de Alta Probabilidad — iSportsAPI
 
-> **Generado:** `2026-07-27 21:49:29`  
+> **Generado:** `2026-07-28 07:48:09`  
 > **Fuente:** iSportsAPI (http://api.isportsapi.com)  
 > **Umbral de filtro:** ≥ 85.0%  
-> **Mostrando:** top 3 de 3 hallazgos
+> **Mostrando:** top 2 de 2 hallazgos
 
 ---
 
-## 1. Envigado FC vs Real Soacha Cundinamarca
+## 1. Auckland FF (W) vs Western Springs (W)
 
 | Campo | Valor |
 |-------|-------|
-| **Liga** | Colombia Primera B |
-| **Minuto / Estado** | 79' — 2ª parte |
-| **Marcador** | 1-0 |
-| **Mercado** | Over/Under 0.5 Goles |
-| **Selección** | `Over 0.5` |
-| **Probabilidad** | **95.0%** ███████████████████░ |
-| **Razonamiento** | xG=6.29, goles=1 |
-
----
-
-## 2. Sorriso EC U20 vs Levante U20
-
-| Campo | Valor |
-|-------|-------|
-| **Liga** | COTIF Tournament |
-| **Minuto / Estado** | 64' — Descanso |
+| **Liga** | New Zealand Premier League Women |
+| **Minuto / Estado** | 17' — 1ª parte |
 | **Marcador** | 0-0 |
-| **Mercado** | Over/Under 2.5 Goles |
-| **Selección** | `Under 2.5` |
+| **Mercado** | Over/Under 4.5 Goles |
+| **Selección** | `Under 4.5` |
 | **Probabilidad** | **95.0%** ███████████████████░ |
-| **Razonamiento** | xG=0.69, goles=0 |
+| **Razonamiento** | xG=1.75, goles=0 |
 
 ---
 
-## 3. Guayaquil City vs Universidad Catolica
+## 2. University of Rouen Normandy vs University of Cyprus
 
 | Campo | Valor |
 |-------|-------|
-| **Liga** | Liga Pro Ecuador Serie A |
-| **Minuto / Estado** | 19' — 1ª parte |
-| **Marcador** | 0-0 |
-| **Mercado** | Over/Under 0.5 Goles |
-| **Selección** | `Over 0.5` |
-| **Probabilidad** | **95.0%** ███████████████████░ |
-| **Razonamiento** | xG=3.55, goles=0 |
+| **Liga** | European Universities Games |
+| **Minuto / Estado** | 47' — Descanso |
+| **Marcador** | 0-1 |
+| **Mercado** | Hándicap Asiático (+1.5) |
+| **Selección** | `Away +1.5` |
+| **Probabilidad** | **93.1%** ██████████████████░░ |
+| **Razonamiento** | margin=1.73 |
 
 ---
