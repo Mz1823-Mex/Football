@@ -1,302 +1,134 @@
 # 🎯 Partidos de Alta Probabilidad — iSportsAPI
 
-> **Generado:** `2026-07-30 00:14:40`  
+> **Generado:** `2026-07-30 10:03:26`  
 > **Fuente:** iSportsAPI (http://api.isportsapi.com)  
 > **Umbral de filtro:** ≥ 85.0%  
-> **Mostrando:** top 21 de 21 hallazgos
+> **Mostrando:** top 9 de 9 hallazgos
 
 ---
 
-## 1. Leones de Rosario vs Newells Old Boys
+## 1. Stade Lavallois MFC vs Granville
 
 | Campo | Valor |
 |-------|-------|
-| **Liga** | Argentina Santa Fe Cup |
-| **Minuto / Estado** | 90' — Penaltis |
-| **Marcador** | 1-1 |
-| **Mercado** | Over/Under 0.5 Goles |
-| **Selección** | `Over 0.5` |
-| **Probabilidad** | **95.0%** ███████████████████░ |
-| **Razonamiento** | xG=7.00, goles=2 |
-
----
-
-## 2. Municipal Limeno vs CD INCA-Aruba
-
-| Campo | Valor |
-|-------|-------|
-| **Liga** | Primera Division de El Salvador |
-| **Minuto / Estado** | 74' — 2ª parte |
-| **Marcador** | 0-1 |
-| **Mercado** | Over/Under 0.5 Goles |
-| **Selección** | `Over 0.5` |
-| **Probabilidad** | **95.0%** ███████████████████░ |
-| **Razonamiento** | xG=4.69, goles=1 |
-
----
-
-## 3. Pittsburgh Riverhounds vs FC Tulsa
-
-| Campo | Valor |
-|-------|-------|
-| **Liga** | USL Championship |
-| **Minuto / Estado** | 74' — 2ª parte |
-| **Marcador** | 0-1 |
-| **Mercado** | Over/Under 0.5 Goles |
-| **Selección** | `Over 0.5` |
-| **Probabilidad** | **95.0%** ███████████████████░ |
-| **Razonamiento** | xG=5.15, goles=1 |
-
----
-
-## 4. El Salvador (W) vs Dominican Republic (W)
-
-| Campo | Valor |
-|-------|-------|
-| **Liga** | Women in American Games |
-| **Minuto / Estado** | 74' — 2ª parte |
-| **Marcador** | 1-0 |
-| **Mercado** | Over/Under 0.5 Goles |
-| **Selección** | `Over 0.5` |
-| **Probabilidad** | **95.0%** ███████████████████░ |
-| **Razonamiento** | xG=4.04, goles=1 |
-
----
-
-## 5. Mexico (W) vs Puerto Rico (W)
-
-| Campo | Valor |
-|-------|-------|
-| **Liga** | Women in American Games |
-| **Minuto / Estado** | 74' — 2ª parte |
-| **Marcador** | 0-0 |
-| **Mercado** | Over/Under 0.5 Goles |
-| **Selección** | `Over 0.5` |
-| **Probabilidad** | **95.0%** ███████████████████░ |
-| **Razonamiento** | xG=4.79, goles=0 |
-
----
-
-## 6. CA Timbuense vs Central Cordoba De Rosario
-
-| Campo | Valor |
-|-------|-------|
-| **Liga** | Argentina Santa Fe Cup |
-| **Minuto / Estado** | 74' — 2ª parte |
-| **Marcador** | 0-0 |
-| **Mercado** | Over/Under 0.5 Goles |
-| **Selección** | `Over 0.5` |
-| **Probabilidad** | **95.0%** ███████████████████░ |
-| **Razonamiento** | xG=5.64, goles=0 |
-
----
-
-## 7. Roraima U20 vs Nautico RR Youth
-
-| Campo | Valor |
-|-------|-------|
-| **Liga** | Brazil national youth (U20) Football Championship |
-| **Minuto / Estado** | 74' — 2ª parte |
-| **Marcador** | 1-0 |
-| **Mercado** | Over/Under 0.5 Goles |
-| **Selección** | `Over 0.5` |
-| **Probabilidad** | **95.0%** ███████████████████░ |
-| **Razonamiento** | xG=4.25, goles=1 |
-
----
-
-## 8. San Martin FC vs Chorrillo
-
-| Campo | Valor |
-|-------|-------|
-| **Liga** | Panama Liga Prom |
-| **Minuto / Estado** | 74' — 2ª parte |
-| **Marcador** | 1-2 |
-| **Mercado** | Over/Under 0.5 Goles |
-| **Selección** | `Over 0.5` |
-| **Probabilidad** | **95.0%** ███████████████████░ |
-| **Razonamiento** | xG=4.58, goles=3 |
-
----
-
-## 9. Goianesia GO vs Crixas FC
-
-| Campo | Valor |
-|-------|-------|
-| **Liga** | Brazil Campeonato Goiano 2 |
-| **Minuto / Estado** | 74' — 2ª parte |
+| **Liga** | International Club Friendly |
+| **Minuto / Estado** | 63' — 2ª parte |
 | **Marcador** | 2-1 |
 | **Mercado** | Over/Under 0.5 Goles |
 | **Selección** | `Over 0.5` |
 | **Probabilidad** | **95.0%** ███████████████████░ |
-| **Razonamiento** | xG=4.79, goles=3 |
+| **Razonamiento** | xG=3.68, goles=3 |
 
 ---
 
-## 10. Greenville Triumph vs AC Boise
+## 2. Sikkim Police vs Red Panda FC
 
 | Campo | Valor |
 |-------|-------|
-| **Liga** | USL League One |
-| **Minuto / Estado** | 74' — 2ª parte |
-| **Marcador** | 2-2 |
+| **Liga** | India Sikkim S-League |
+| **Minuto / Estado** | 63' — Descanso |
+| **Marcador** | 1-1 |
 | **Mercado** | Over/Under 0.5 Goles |
 | **Selección** | `Over 0.5` |
 | **Probabilidad** | **95.0%** ███████████████████░ |
-| **Razonamiento** | xG=6.35, goles=4 |
+| **Razonamiento** | xG=5.00, goles=2 |
 
 ---
 
-## 11. America SE vs Lagarto
+## 3. South Melbourne vs Adelaide United
 
 | Campo | Valor |
 |-------|-------|
-| **Liga** | Brazil Copa Sergipe |
-| **Minuto / Estado** | 74' — 2ª parte |
+| **Liga** | Australia Cup |
+| **Minuto / Estado** | 33' — 1ª parte |
 | **Marcador** | 0-1 |
 | **Mercado** | Over/Under 0.5 Goles |
 | **Selección** | `Over 0.5` |
 | **Probabilidad** | **95.0%** ███████████████████░ |
-| **Razonamiento** | xG=4.15, goles=1 |
+| **Razonamiento** | xG=3.51, goles=1 |
 
 ---
 
-## 12. Sarasota Paradise vs Portland Hearts of Pine
+## 4. Suruchi Sangha vs Mohammedan SC Reserves
 
 | Campo | Valor |
 |-------|-------|
-| **Liga** | International Club Friendly |
-| **Minuto / Estado** | 44' — 1ª parte |
+| **Liga** | Calcutta Football League |
+| **Minuto / Estado** | 33' — 1ª parte |
 | **Marcador** | 0-0 |
-| **Mercado** | Over/Under 2.5 Goles |
-| **Selección** | `Under 2.5` |
+| **Mercado** | Over/Under 4.5 Goles |
+| **Selección** | `Under 4.5` |
 | **Probabilidad** | **95.0%** ███████████████████░ |
-| **Razonamiento** | xG=0.42, goles=0 |
+| **Razonamiento** | xG=1.89, goles=0 |
 
 ---
 
-## 13. Liverpool vs Wrexham
+## 5. Coal India vs Calcutta Polica Club
 
 | Campo | Valor |
 |-------|-------|
-| **Liga** | International Club Friendly |
-| **Minuto / Estado** | 44' — 1ª parte |
+| **Liga** | Calcutta Football League |
+| **Minuto / Estado** | 33' — 1ª parte |
 | **Marcador** | 0-0 |
-| **Mercado** | Over/Under 0.5 Goles |
-| **Selección** | `Over 0.5` |
+| **Mercado** | Over/Under 4.5 Goles |
+| **Selección** | `Under 4.5` |
 | **Probabilidad** | **95.0%** ███████████████████░ |
-| **Razonamiento** | xG=4.29, goles=0 |
+| **Razonamiento** | xG=1.46, goles=0 |
 
 ---
 
-## 14. Louisville City FC vs Birmingham Legion
+## 6. Dunarea Galati vs University of Cyprus
 
 | Campo | Valor |
 |-------|-------|
-| **Liga** | USL Championship |
-| **Minuto / Estado** | 44' — 1ª parte |
-| **Marcador** | 1-0 |
-| **Mercado** | Over/Under 0.5 Goles |
-| **Selección** | `Over 0.5` |
-| **Probabilidad** | **95.0%** ███████████████████░ |
-| **Razonamiento** | xG=5.51, goles=1 |
-
----
-
-## 15. Kansas City NWSL (W) vs Racing Louisville (W)
-
-| Campo | Valor |
-|-------|-------|
-| **Liga** | USA Women |
-| **Minuto / Estado** | 14' — 1ª parte |
-| **Marcador** | 1-0 |
-| **Mercado** | Over/Under 0.5 Goles |
-| **Selección** | `Over 0.5` |
-| **Probabilidad** | **95.0%** ███████████████████░ |
-| **Razonamiento** | xG=3.44, goles=1 |
-
----
-
-## 16. Independiente del Valle vs Manta FC
-
-| Campo | Valor |
-|-------|-------|
-| **Liga** | Ecuador Cup |
-| **Minuto / Estado** | 14' — 1ª parte |
+| **Liga** | European Universities Games |
+| **Minuto / Estado** | 33' — 1ª parte |
 | **Marcador** | 0-0 |
-| **Mercado** | Doble Oportunidad |
-| **Selección** | `1X` |
+| **Mercado** | Hándicap Asiático (+1.5) |
+| **Selección** | `Home +1.5` |
 | **Probabilidad** | **95.0%** ███████████████████░ |
-| **Razonamiento** | Home gana o empata, momentum=0.00 |
+| **Razonamiento** | margin=2.42 |
 
 ---
 
-## 17. UMECIT vs Deportivo Saprissa
+## 7. Ugyen Academy vs RTC FC
 
 | Campo | Valor |
 |-------|-------|
-| **Liga** | CONCACAF Central American Cup |
-| **Minuto / Estado** | 14' — 1ª parte |
-| **Marcador** | 0-0 |
-| **Mercado** | Over/Under 1.5 Goles |
-| **Selección** | `Under 1.5` |
-| **Probabilidad** | **95.0%** ███████████████████░ |
-| **Razonamiento** | xG=0.21, goles=0 |
-
----
-
-## 18. Ferroviaria SP (W) vs Taubate(W)
-
-| Campo | Valor |
-|-------|-------|
-| **Liga** | Brazil Paulista Women's League |
-| **Minuto / Estado** | 14' — 1ª parte |
-| **Marcador** | 0-1 |
-| **Mercado** | Over/Under 0.5 Goles |
-| **Selección** | `Over 0.5` |
-| **Probabilidad** | **95.0%** ███████████████████░ |
-| **Razonamiento** | xG=3.49, goles=1 |
-
----
-
-## 19. Deportivo Santo Domingo vs 9 de Octubre
-
-| Campo | Valor |
-|-------|-------|
-| **Liga** | Liga Pro Ecuador Serie B |
-| **Minuto / Estado** | 14' — 1ª parte |
-| **Marcador** | 0-0 |
-| **Mercado** | Doble Oportunidad |
-| **Selección** | `1X` |
-| **Probabilidad** | **95.0%** ███████████████████░ |
-| **Razonamiento** | Home gana o empata, momentum=0.00 |
-
----
-
-## 20. Forward Madison FC vs Chattanooga Red Wolves
-
-| Campo | Valor |
-|-------|-------|
-| **Liga** | USL League One |
-| **Minuto / Estado** | 14' — 1ª parte |
-| **Marcador** | 1-0 |
-| **Mercado** | Doble Oportunidad |
-| **Selección** | `1X` |
-| **Probabilidad** | **95.0%** ███████████████████░ |
-| **Razonamiento** | Home gana o empata, momentum=1.00 |
-
----
-
-## 21. Morrinhos FC vs Bom Jesus
-
-| Campo | Valor |
-|-------|-------|
-| **Liga** | Brazil Campeonato Goiano 2 |
-| **Minuto / Estado** | 74' — 2ª parte |
+| **Liga** | Bhutan Thimphu League |
+| **Minuto / Estado** | 3' — 1ª parte |
 | **Marcador** | 0-0 |
 | **Mercado** | Over/Under 0.5 Goles |
 | **Selección** | `Over 0.5` |
-| **Probabilidad** | **94.9%** ██████████████████░░ |
-| **Razonamiento** | xG=2.98, goles=0 |
+| **Probabilidad** | **95.0%** ███████████████████░ |
+| **Razonamiento** | xG=3.82, goles=0 |
+
+---
+
+## 8. Anri Vladivostok vs Dinamo Barnaul
+
+| Campo | Valor |
+|-------|-------|
+| **Liga** | Russia Cup |
+| **Minuto / Estado** | 33' — 1ª parte |
+| **Marcador** | 0-0 |
+| **Mercado** | Hándicap Asiático (+1.5) |
+| **Selección** | `Away +1.5` |
+| **Probabilidad** | **94.26%** ██████████████████░░ |
+| **Razonamiento** | margin=1.87 |
+
+---
+
+## 9. Sydney Olympic vs Brisbane Roar
+
+| Campo | Valor |
+|-------|-------|
+| **Liga** | Australia Cup |
+| **Minuto / Estado** | 33' — 1ª parte |
+| **Marcador** | 0-0 |
+| **Mercado** | Hándicap Asiático (+1.5) |
+| **Selección** | `Away +1.5` |
+| **Probabilidad** | **92.81%** ██████████████████░░ |
+| **Razonamiento** | margin=1.71 |
 
 ---
