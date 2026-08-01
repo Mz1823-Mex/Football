@@ -1,271 +1,173 @@
 # 🎯 Partidos de Alta Probabilidad — iSportsAPI
 
-> **Generado:** `2026-08-01 08:58:06`  
+> **Generado:** `2026-08-01 12:17:38`  
 > **Fuente:** iSportsAPI (http://api.isportsapi.com)  
 > **Umbral de filtro:** ≥ 85.0%  
-> **Mostrando:** top 50 de 50 hallazgos
+> **Mostrando:** top 50 de 185 hallazgos
 
 ---
 
-## 1. White City Woodville vs Croydon Kings
-
-| Campo | Valor |
-|-------|-------|
-| **Liga** | FFSA Premier League |
-| **Minuto / Estado** | 87' — 2ª parte |
-| **Marcador** | 1-2 |
-| **Mercado** | Over/Under 0.5 Goles |
-| **Selección** | `Over 0.5` |
-| **Probabilidad** | **95.0%** ███████████████████░ |
-| **Razonamiento** | xG=3.88, goles=3 |
-
----
-
-## 2. FC Zagorets vs Neff supporting Simic
+## 1. Varzim vs Viseu
 
 | Campo | Valor |
 |-------|-------|
 | **Liga** | International Club Friendly |
-| **Minuto / Estado** | 87' — 2ª parte |
-| **Marcador** | 0-1 |
-| **Mercado** | Over/Under 0.5 Goles |
-| **Selección** | `Under 0.5` |
-| **Probabilidad** | **95.0%** ███████████████████░ |
-| **Razonamiento** | xG=0.00, goles=1 |
-
----
-
-## 3. Deportiva Minera vs UD Los Garres
-
-| Campo | Valor |
-|-------|-------|
-| **Liga** | International Club Friendly |
-| **Minuto / Estado** | 87' — 2ª parte |
-| **Marcador** | 1-0 |
+| **Minuto / Estado** | 90' — Penaltis |
+| **Marcador** | 2-2 |
 | **Mercado** | Over/Under 0.5 Goles |
 | **Selección** | `Over 0.5` |
 | **Probabilidad** | **95.0%** ███████████████████░ |
-| **Razonamiento** | xG=3.65, goles=1 |
+| **Razonamiento** | xG=7.00, goles=4 |
 
 ---
 
-## 4. Lazio vs Avellino
-
-| Campo | Valor |
-|-------|-------|
-| **Liga** | International Club Friendly |
-| **Minuto / Estado** | 87' — 2ª parte |
-| **Marcador** | 5-2 |
-| **Mercado** | Over/Under 0.5 Goles |
-| **Selección** | `Over 0.5` |
-| **Probabilidad** | **95.0%** ███████████████████░ |
-| **Razonamiento** | xG=5.46, goles=7 |
-
----
-
-## 5. The Cove FC vs Cumberland United FC
-
-| Campo | Valor |
-|-------|-------|
-| **Liga** | South Australian Premier League |
-| **Minuto / Estado** | 87' — 2ª parte |
-| **Marcador** | 0-1 |
-| **Mercado** | Doble Oportunidad |
-| **Selección** | `X2` |
-| **Probabilidad** | **95.0%** ███████████████████░ |
-| **Razonamiento** | Away gana o empata, momentum=-0.52 |
-
----
-
-## 6. Gold Coast United W vs Gold Coast Knights (W)
-
-| Campo | Valor |
-|-------|-------|
-| **Liga** | Australia Queensland State Women's Premier League |
-| **Minuto / Estado** | 87' — 2ª parte |
-| **Marcador** | 0-1 |
-| **Mercado** | Over/Under 0.5 Goles |
-| **Selección** | `Over 0.5` |
-| **Probabilidad** | **95.0%** ███████████████████░ |
-| **Razonamiento** | xG=5.01, goles=1 |
-
----
-
-## 7. Monaro Panthers vs OConnor Knights
-
-| Campo | Valor |
-|-------|-------|
-| **Liga** | National Premier Leagues Capital Football |
-| **Minuto / Estado** | 72' — 2ª parte |
-| **Marcador** | 1-0 |
-| **Mercado** | Over/Under 0.5 Goles |
-| **Selección** | `Over 0.5` |
-| **Probabilidad** | **95.0%** ███████████████████░ |
-| **Razonamiento** | xG=4.92, goles=1 |
-
----
-
-## 8. Modbury Vista vs Ungerville
-
-| Campo | Valor |
-|-------|-------|
-| **Liga** | Australia South Australia State League 2 |
-| **Minuto / Estado** | 62' — Descanso |
-| **Marcador** | 4-0 |
-| **Mercado** | Over/Under 0.5 Goles |
-| **Selección** | `Over 0.5` |
-| **Probabilidad** | **95.0%** ███████████████████░ |
-| **Razonamiento** | xG=0.29, goles=4 |
-
----
-
-## 9. Yan An Ronghai vs Bei Li Gong
+## 2. Qingdao Red Lions vs Lanzhou Longyuan Athletics
 
 | Campo | Valor |
 |-------|-------|
 | **Liga** | Chinese Football Association Yi League |
-| **Minuto / Estado** | 57' — Descanso |
-| **Marcador** | 1-0 |
-| **Mercado** | Over/Under 0.5 Goles |
-| **Selección** | `Over 0.5` |
-| **Probabilidad** | **95.0%** ███████████████████░ |
-| **Razonamiento** | xG=4.30, goles=1 |
-
----
-
-## 10. Queensland Lions SC vs Peninsula Power
-
-| Campo | Valor |
-|-------|-------|
-| **Liga** | QLD Premier League |
-| **Minuto / Estado** | 57' — Descanso |
+| **Minuto / Estado** | 90' — 2ª parte |
 | **Marcador** | 0-0 |
 | **Mercado** | Over/Under 0.5 Goles |
 | **Selección** | `Over 0.5` |
 | **Probabilidad** | **95.0%** ███████████████████░ |
-| **Razonamiento** | xG=3.70, goles=0 |
+| **Razonamiento** | xG=7.00, goles=0 |
 
 ---
 
-## 11. AD Alcorcon vs Getafe B
+## 3. Tianjin Tigers vs Yunnan Yukun
 
 | Campo | Valor |
 |-------|-------|
-| **Liga** | International Club Friendly |
-| **Minuto / Estado** | 57' — Descanso |
-| **Marcador** | 2-0 |
-| **Mercado** | Over/Under 0.5 Goles |
-| **Selección** | `Over 0.5` |
-| **Probabilidad** | **95.0%** ███████████████████░ |
-| **Razonamiento** | xG=3.81, goles=2 |
-
----
-
-## 12. Mladost Zdralovi vs NK Dubrava Zagreb
-
-| Campo | Valor |
-|-------|-------|
-| **Liga** | International Club Friendly |
-| **Minuto / Estado** | 57' — 1ª parte |
-| **Marcador** | 1-0 |
-| **Mercado** | Hándicap Asiático (+0.5) |
-| **Selección** | `Home +0.5` |
-| **Probabilidad** | **95.0%** ███████████████████░ |
-| **Razonamiento** | margin=2.21 |
-
----
-
-## 13. NK Udarnik Kurilovec vs Bjelovar
-
-| Campo | Valor |
-|-------|-------|
-| **Liga** | International Club Friendly |
-| **Minuto / Estado** | 57' — 2ª parte |
-| **Marcador** | 0-0 |
-| **Mercado** | Hándicap Asiático (+1.5) |
-| **Selección** | `Home +1.5` |
-| **Probabilidad** | **95.0%** ███████████████████░ |
-| **Razonamiento** | margin=2.03 |
-
----
-
-## 14. Levante vs Albacete
-
-| Campo | Valor |
-|-------|-------|
-| **Liga** | International Club Friendly |
-| **Minuto / Estado** | 57' — Descanso |
-| **Marcador** | 1-1 |
-| **Mercado** | Over/Under 0.5 Goles |
-| **Selección** | `Over 0.5` |
-| **Probabilidad** | **95.0%** ███████████████████░ |
-| **Razonamiento** | xG=2.90, goles=2 |
-
----
-
-## 15. Neptun Konskie vs RKS Radomsko
-
-| Campo | Valor |
-|-------|-------|
-| **Liga** | International Club Friendly |
-| **Minuto / Estado** | 57' — Descanso |
-| **Marcador** | 1-1 |
-| **Mercado** | Over/Under 0.5 Goles |
-| **Selección** | `Over 0.5` |
-| **Probabilidad** | **95.0%** ███████████████████░ |
-| **Razonamiento** | xG=0.28, goles=2 |
-
----
-
-## 16. NK Lucko vs HNK Segesta Sisak
-
-| Campo | Valor |
-|-------|-------|
-| **Liga** | International Club Friendly |
-| **Minuto / Estado** | 57' — 2ª parte |
+| **Liga** | Chinese Super League |
+| **Minuto / Estado** | 77' — 2ª parte |
 | **Marcador** | 0-1 |
 | **Mercado** | Over/Under 0.5 Goles |
 | **Selección** | `Over 0.5` |
 | **Probabilidad** | **95.0%** ███████████████████░ |
-| **Razonamiento** | xG=3.42, goles=1 |
+| **Razonamiento** | xG=4.85, goles=1 |
 
 ---
 
-## 17. Penafiel vs Gil Vicente
+## 4. Akron Togliatti vs Rubin Kazan
 
 | Campo | Valor |
 |-------|-------|
-| **Liga** | International Club Friendly |
-| **Minuto / Estado** | 57' — 1ª parte |
+| **Liga** | Russia Premier League |
+| **Minuto / Estado** | 77' — 2ª parte |
+| **Marcador** | 1-2 |
+| **Mercado** | Over/Under 0.5 Goles |
+| **Selección** | `Over 0.5` |
+| **Probabilidad** | **95.0%** ███████████████████░ |
+| **Razonamiento** | xG=6.75, goles=3 |
+
+---
+
+## 5. Ostersunds FK vs Osters IF
+
+| Campo | Valor |
+|-------|-------|
+| **Liga** | Sweden Superettan |
+| **Minuto / Estado** | 77' — 2ª parte |
 | **Marcador** | 0-0 |
-| **Mercado** | Over/Under 1.5 Goles |
-| **Selección** | `Under 1.5` |
+| **Mercado** | Over/Under 0.5 Goles |
+| **Selección** | `Over 0.5` |
 | **Probabilidad** | **95.0%** ███████████████████░ |
-| **Razonamiento** | xG=0.32, goles=0 |
+| **Razonamiento** | xG=5.65, goles=0 |
 
 ---
 
-## 18. Afumati vs CS Dinamo Bucuresti
+## 6. Angelholms FF vs Ariana
 
 | Campo | Valor |
 |-------|-------|
-| **Liga** | Romania - Liga 2 Seria |
-| **Minuto / Estado** | 57' — Descanso |
-| **Marcador** | 0-1 |
-| **Mercado** | Hándicap Asiático (+1.5) |
-| **Selección** | `Home +1.5` |
+| **Liga** | Sweden Division 1 |
+| **Minuto / Estado** | 77' — 2ª parte |
+| **Marcador** | 0-0 |
+| **Mercado** | Over/Under 0.5 Goles |
+| **Selección** | `Over 0.5` |
 | **Probabilidad** | **95.0%** ███████████████████░ |
-| **Razonamiento** | margin=2.29 |
+| **Razonamiento** | xG=3.88, goles=0 |
 
 ---
 
-## 19. Cetate Suceava vs Concordia Chiajna
+## 7. Tvaakers IF vs Utsiktens BK
 
 | Campo | Valor |
 |-------|-------|
-| **Liga** | Romania - Liga 2 Seria |
-| **Minuto / Estado** | 57' — Descanso |
-| **Marcador** | 0-2 |
+| **Liga** | Sweden Division 1 |
+| **Minuto / Estado** | 77' — 2ª parte |
+| **Marcador** | 1-0 |
+| **Mercado** | Over/Under 0.5 Goles |
+| **Selección** | `Over 0.5` |
+| **Probabilidad** | **95.0%** ███████████████████░ |
+| **Razonamiento** | xG=4.14, goles=1 |
+
+---
+
+## 8. Dalian Kun City vs ShanXi Union
+
+| Campo | Valor |
+|-------|-------|
+| **Liga** | Chinese Football Association Jia League |
+| **Minuto / Estado** | 77' — 2ª parte |
+| **Marcador** | 2-2 |
+| **Mercado** | Over/Under 0.5 Goles |
+| **Selección** | `Over 0.5` |
+| **Probabilidad** | **95.0%** ███████████████████░ |
+| **Razonamiento** | xG=7.00, goles=4 |
+
+---
+
+## 9. Ningbo Professional Football Club vs Guangxi Hengchen
+
+| Campo | Valor |
+|-------|-------|
+| **Liga** | Chinese Football Association Jia League |
+| **Minuto / Estado** | 77' — 2ª parte |
+| **Marcador** | 1-2 |
+| **Mercado** | Over/Under 0.5 Goles |
+| **Selección** | `Over 0.5` |
+| **Probabilidad** | **95.0%** ███████████████████░ |
+| **Razonamiento** | xG=7.00, goles=3 |
+
+---
+
+## 10. SJK Akatemia B vs GBK Kokkola
+
+| Campo | Valor |
+|-------|-------|
+| **Liga** | Finland - Kakkonen Lohko |
+| **Minuto / Estado** | 77' — 2ª parte |
+| **Marcador** | 2-1 |
+| **Mercado** | Over/Under 0.5 Goles |
+| **Selección** | `Over 0.5` |
+| **Probabilidad** | **95.0%** ███████████████████░ |
+| **Razonamiento** | xG=7.00, goles=3 |
+
+---
+
+## 11. Pors Grenland vs Brattvag
+
+| Campo | Valor |
+|-------|-------|
+| **Liga** | Norway 2.Liga |
+| **Minuto / Estado** | 77' — 2ª parte |
+| **Marcador** | 1-1 |
+| **Mercado** | Over/Under 0.5 Goles |
+| **Selección** | `Over 0.5` |
+| **Probabilidad** | **95.0%** ███████████████████░ |
+| **Razonamiento** | xG=4.77, goles=2 |
+
+---
+
+## 12. Stjordals Blink vs Rana FK
+
+| Campo | Valor |
+|-------|-------|
+| **Liga** | Norway 2.Liga |
+| **Minuto / Estado** | 77' — 2ª parte |
+| **Marcador** | 1-1 |
 | **Mercado** | Over/Under 0.5 Goles |
 | **Selección** | `Over 0.5` |
 | **Probabilidad** | **95.0%** ███████████████████░ |
@@ -273,436 +175,534 @@
 
 ---
 
-## 20. Scolar Resita vs FCM Targu Mures
+## 13. Hillerod Fodbold vs Esbjerg
 
 | Campo | Valor |
 |-------|-------|
-| **Liga** | Romania - Liga 2 Seria |
-| **Minuto / Estado** | 57' — Descanso |
+| **Liga** | Danish 1st Division |
+| **Minuto / Estado** | 77' — 2ª parte |
+| **Marcador** | 0-3 |
+| **Mercado** | Over/Under 0.5 Goles |
+| **Selección** | `Over 0.5` |
+| **Probabilidad** | **95.0%** ███████████████████░ |
+| **Razonamiento** | xG=6.83, goles=3 |
+
+---
+
+## 14. Dalian Yingbo B vs Shanghai Port B
+
+| Campo | Valor |
+|-------|-------|
+| **Liga** | Chinese Football Association Yi League |
+| **Minuto / Estado** | 77' — 2ª parte |
+| **Marcador** | 1-0 |
+| **Mercado** | Over/Under 0.5 Goles |
+| **Selección** | `Over 0.5` |
+| **Probabilidad** | **95.0%** ███████████████████░ |
+| **Razonamiento** | xG=7.00, goles=1 |
+
+---
+
+## 15. FK Valmiera vs Rigas Futbola skola II
+
+| Campo | Valor |
+|-------|-------|
+| **Liga** | Latvia Division 2 |
+| **Minuto / Estado** | 77' — 2ª parte |
 | **Marcador** | 2-1 |
 | **Mercado** | Over/Under 0.5 Goles |
 | **Selección** | `Over 0.5` |
 | **Probabilidad** | **95.0%** ███████████████████░ |
-| **Razonamiento** | xG=4.68, goles=3 |
+| **Razonamiento** | xG=5.91, goles=3 |
 
 ---
 
-## 21. FC Bacau vs Lindab Stefanesti
+## 16. Meuselwitz U19 vs Chemnitzer U19
 
 | Campo | Valor |
 |-------|-------|
-| **Liga** | Romania - Liga 2 Seria |
-| **Minuto / Estado** | 57' — Descanso |
-| **Marcador** | 1-0 |
+| **Liga** | German Junioren Bundesliga Cup |
+| **Minuto / Estado** | 77' — 2ª parte |
+| **Marcador** | 0-5 |
 | **Mercado** | Over/Under 0.5 Goles |
 | **Selección** | `Over 0.5` |
 | **Probabilidad** | **95.0%** ███████████████████░ |
-| **Razonamiento** | xG=4.66, goles=1 |
+| **Razonamiento** | xG=0.01, goles=5 |
 
 ---
 
-## 22. FC Gloria Bistrita vs ACS Viitorul Selimbar
-
-| Campo | Valor |
-|-------|-------|
-| **Liga** | Romania - Liga 2 Seria |
-| **Minuto / Estado** | 57' — Descanso |
-| **Marcador** | 0-0 |
-| **Mercado** | Over/Under 0.5 Goles |
-| **Selección** | `Over 0.5` |
-| **Probabilidad** | **95.0%** ███████████████████░ |
-| **Razonamiento** | xG=5.21, goles=0 |
-
----
-
-## 23. Metaloglobus vs AFC Metalul Buzau
-
-| Campo | Valor |
-|-------|-------|
-| **Liga** | Romania - Liga 2 Seria |
-| **Minuto / Estado** | 57' — Descanso |
-| **Marcador** | 0-0 |
-| **Mercado** | Over/Under 0.5 Goles |
-| **Selección** | `Over 0.5` |
-| **Probabilidad** | **95.0%** ███████████████████░ |
-| **Razonamiento** | xG=4.78, goles=0 |
-
----
-
-## 24. CSM Ramnicu Valcea vs Gloria Popesti-Leordeni
-
-| Campo | Valor |
-|-------|-------|
-| **Liga** | Romania - Liga 2 Seria |
-| **Minuto / Estado** | 57' — Descanso |
-| **Marcador** | 1-0 |
-| **Mercado** | Over/Under 0.5 Goles |
-| **Selección** | `Over 0.5` |
-| **Probabilidad** | **95.0%** ███████████████████░ |
-| **Razonamiento** | xG=4.03, goles=1 |
-
----
-
-## 25. FC Bihor Oradea vs FC Unirea 2004 Slobozia
-
-| Campo | Valor |
-|-------|-------|
-| **Liga** | Romania - Liga 2 Seria |
-| **Minuto / Estado** | 57' — Descanso |
-| **Marcador** | 1-0 |
-| **Mercado** | Over/Under 0.5 Goles |
-| **Selección** | `Over 0.5` |
-| **Probabilidad** | **95.0%** ███████████████████░ |
-| **Razonamiento** | xG=4.13, goles=1 |
-
----
-
-## 26. FK Ladomir (W) vs Shakhtar Donetsk (W)
-
-| Campo | Valor |
-|-------|-------|
-| **Liga** | Ukraine women League |
-| **Minuto / Estado** | 57' — Descanso |
-| **Marcador** | 0-0 |
-| **Mercado** | Over/Under 1.5 Goles |
-| **Selección** | `Under 1.5` |
-| **Probabilidad** | **95.0%** ███████████████████░ |
-| **Razonamiento** | xG=0.32, goles=0 |
-
----
-
-## 27. Redlands United FC vs Caboolture FC
-
-| Campo | Valor |
-|-------|-------|
-| **Liga** | Australia Queensland State Leagues |
-| **Minuto / Estado** | 57' — Descanso |
-| **Marcador** | 0-2 |
-| **Mercado** | Over/Under 0.5 Goles |
-| **Selección** | `Over 0.5` |
-| **Probabilidad** | **95.0%** ███████████████████░ |
-| **Razonamiento** | xG=4.35, goles=2 |
-
----
-
-## 28. Sunshine Coast Wanderers FC vs Ipswich City
-
-| Campo | Valor |
-|-------|-------|
-| **Liga** | Australia Queensland State Leagues |
-| **Minuto / Estado** | 57' — Descanso |
-| **Marcador** | 0-0 |
-| **Mercado** | Hándicap Asiático (+1.5) |
-| **Selección** | `Away +1.5` |
-| **Probabilidad** | **95.0%** ███████████████████░ |
-| **Razonamiento** | margin=2.08 |
-
----
-
-## 29. Holland Park Hawks U23 vs Robina City Blue U23
-
-| Campo | Valor |
-|-------|-------|
-| **Liga** | Australia NPL Queensland U23 |
-| **Minuto / Estado** | 57' — Descanso |
-| **Marcador** | 2-1 |
-| **Mercado** | Over/Under 0.5 Goles |
-| **Selección** | `Over 0.5` |
-| **Probabilidad** | **95.0%** ███████████████████░ |
-| **Razonamiento** | xG=2.85, goles=3 |
-
----
-
-## 30. Heidelberg United (W) vs Essendon Royals (W)
-
-| Campo | Valor |
-|-------|-------|
-| **Liga** | Australia Victorian Women's Cup |
-| **Minuto / Estado** | 57' — Descanso |
-| **Marcador** | 0-1 |
-| **Mercado** | Over/Under 0.5 Goles |
-| **Selección** | `Over 0.5` |
-| **Probabilidad** | **95.0%** ███████████████████░ |
-| **Razonamiento** | xG=3.27, goles=1 |
-
----
-
-## 31. Moreton City Excelsior II vs Virginia United
-
-| Campo | Valor |
-|-------|-------|
-| **Liga** | Queensland Premier League 2 |
-| **Minuto / Estado** | 57' — Descanso |
-| **Marcador** | 0-1 |
-| **Mercado** | Over/Under 0.5 Goles |
-| **Selección** | `Over 0.5` |
-| **Probabilidad** | **95.0%** ███████████████████░ |
-| **Razonamiento** | xG=3.59, goles=1 |
-
----
-
-## 32. Pine Hills vs Grange Thistle SC
-
-| Campo | Valor |
-|-------|-------|
-| **Liga** | Queensland Premier League 2 |
-| **Minuto / Estado** | 57' — Descanso |
-| **Marcador** | 1-0 |
-| **Mercado** | Over/Under 2.5 Goles |
-| **Selección** | `Under 2.5` |
-| **Probabilidad** | **95.0%** ███████████████████░ |
-| **Razonamiento** | xG=0.32, goles=1 |
-
----
-
-## 33. FK Rostov (W) vs FK Ryazan (W)
-
-| Campo | Valor |
-|-------|-------|
-| **Liga** | Russia Womens Premier League |
-| **Minuto / Estado** | 57' — Descanso |
-| **Marcador** | 0-0 |
-| **Mercado** | Doble Oportunidad |
-| **Selección** | `1X` |
-| **Probabilidad** | **95.0%** ███████████████████░ |
-| **Razonamiento** | Home gana o empata, momentum=0.00 |
-
----
-
-## 34. ABC Branik vs Meteor Praha
-
-| Campo | Valor |
-|-------|-------|
-| **Liga** | Czech Republic Cup |
-| **Minuto / Estado** | 42' — 1ª parte |
-| **Marcador** | 0-2 |
-| **Mercado** | Over/Under 0.5 Goles |
-| **Selección** | `Over 0.5` |
-| **Probabilidad** | **95.0%** ███████████████████░ |
-| **Razonamiento** | xG=3.51, goles=2 |
-
----
-
-## 35. SK Petrin Plzen vs Komarov
-
-| Campo | Valor |
-|-------|-------|
-| **Liga** | Czech Republic Cup |
-| **Minuto / Estado** | 42' — 1ª parte |
-| **Marcador** | 1-0 |
-| **Mercado** | Hándicap Asiático (+1.5) |
-| **Selección** | `Home +1.5` |
-| **Probabilidad** | **95.0%** ███████████████████░ |
-| **Razonamiento** | margin=2.68 |
-
----
-
-## 36. FC Slavia HK vs Trutnov
-
-| Campo | Valor |
-|-------|-------|
-| **Liga** | Czech Republic Cup |
-| **Minuto / Estado** | 42' — 1ª parte |
-| **Marcador** | 0-0 |
-| **Mercado** | Hándicap Asiático (+1.5) |
-| **Selección** | `Away +1.5` |
-| **Probabilidad** | **95.0%** ███████████████████░ |
-| **Razonamiento** | margin=2.92 |
-
----
-
-## 37. Admira Praha vs Dukla Praha B
+## 17. Hertha Zehlendorf vs Germania Halberstadt
 
 | Campo | Valor |
 |-------|-------|
 | **Liga** | International Club Friendly |
-| **Minuto / Estado** | 42' — 1ª parte |
-| **Marcador** | 1-0 |
-| **Mercado** | Hándicap Asiático (+0.5) |
-| **Selección** | `Home +0.5` |
+| **Minuto / Estado** | 77' — 2ª parte |
+| **Marcador** | 2-2 |
+| **Mercado** | Over/Under 0.5 Goles |
+| **Selección** | `Over 0.5` |
 | **Probabilidad** | **95.0%** ███████████████████░ |
-| **Razonamiento** | margin=2.32 |
+| **Razonamiento** | xG=4.03, goles=4 |
 
 ---
 
-## 38. Sutherland Sharks U20 vs Wollongong Wolves U20
+## 18. Ballyclare Comrades vs Carrick Rangers
 
 | Campo | Valor |
 |-------|-------|
-| **Liga** | Northern NSW U20 League |
-| **Minuto / Estado** | 42' — 1ª parte |
+| **Liga** | International Club Friendly |
+| **Minuto / Estado** | 77' — 2ª parte |
+| **Marcador** | 1-7 |
+| **Mercado** | Over/Under 0.5 Goles |
+| **Selección** | `Over 0.5` |
+| **Probabilidad** | **95.0%** ███████████████████░ |
+| **Razonamiento** | xG=5.27, goles=8 |
+
+---
+
+## 19. Eintracht Braunschweig vs LaLouviere
+
+| Campo | Valor |
+|-------|-------|
+| **Liga** | International Club Friendly |
+| **Minuto / Estado** | 77' — 2ª parte |
+| **Marcador** | 0-0 |
+| **Mercado** | Over/Under 0.5 Goles |
+| **Selección** | `Over 0.5` |
+| **Probabilidad** | **95.0%** ███████████████████░ |
+| **Razonamiento** | xG=3.48, goles=0 |
+
+---
+
+## 20. Nurnberg vs Real Oviedo
+
+| Campo | Valor |
+|-------|-------|
+| **Liga** | International Club Friendly |
+| **Minuto / Estado** | 77' — 2ª parte |
 | **Marcador** | 2-0 |
 | **Mercado** | Over/Under 0.5 Goles |
 | **Selección** | `Over 0.5` |
 | **Probabilidad** | **95.0%** ███████████████████░ |
-| **Razonamiento** | xG=3.94, goles=2 |
+| **Razonamiento** | xG=2.71, goles=2 |
 
 ---
 
-## 39. Klasterec vs Tachov
-
-| Campo | Valor |
-|-------|-------|
-| **Liga** | Czech Republic Cup |
-| **Minuto / Estado** | 27' — 1ª parte |
-| **Marcador** | 0-1 |
-| **Mercado** | Over/Under 0.5 Goles |
-| **Selección** | `Over 0.5` |
-| **Probabilidad** | **95.0%** ███████████████████░ |
-| **Razonamiento** | xG=3.18, goles=1 |
-
----
-
-## 40. FK Okula Nyrsko vs Krimice
-
-| Campo | Valor |
-|-------|-------|
-| **Liga** | Czech Republic Cup |
-| **Minuto / Estado** | 27' — 1ª parte |
-| **Marcador** | 0-0 |
-| **Mercado** | Over/Under 3.5 Goles |
-| **Selección** | `Under 3.5` |
-| **Probabilidad** | **95.0%** ███████████████████░ |
-| **Razonamiento** | xG=0.93, goles=0 |
-
----
-
-## 41. FK Prepere vs Velke Hamry
-
-| Campo | Valor |
-|-------|-------|
-| **Liga** | Czech Republic Cup |
-| **Minuto / Estado** | 27' — 1ª parte |
-| **Marcador** | 0-0 |
-| **Mercado** | Over/Under 0.5 Goles |
-| **Selección** | `Over 0.5` |
-| **Probabilidad** | **95.0%** ███████████████████░ |
-| **Razonamiento** | xG=3.17, goles=0 |
-
----
-
-## 42. Jiskra Usti nad Orlici vs TJ Svitavy
-
-| Campo | Valor |
-|-------|-------|
-| **Liga** | Czech Republic Cup |
-| **Minuto / Estado** | 27' — 1ª parte |
-| **Marcador** | 1-1 |
-| **Mercado** | Over/Under 0.5 Goles |
-| **Selección** | `Over 0.5` |
-| **Probabilidad** | **95.0%** ███████████████████░ |
-| **Razonamiento** | xG=3.07, goles=2 |
-
----
-
-## 43. NMSK 1922 Bratislava vs Dunajska Luzna
-
-| Campo | Valor |
-|-------|-------|
-| **Liga** | Slovakia Cup |
-| **Minuto / Estado** | 27' — 1ª parte |
-| **Marcador** | 0-0 |
-| **Mercado** | Over/Under 0.5 Goles |
-| **Selección** | `Over 0.5` |
-| **Probabilidad** | **95.0%** ███████████████████░ |
-| **Razonamiento** | xG=3.07, goles=0 |
-
----
-
-## 44. St George Saints vs SD Raiders FC
-
-| Campo | Valor |
-|-------|-------|
-| **Liga** | NSW Premier League |
-| **Minuto / Estado** | 27' — 1ª parte |
-| **Marcador** | 0-0 |
-| **Mercado** | Hándicap Asiático (+1.5) |
-| **Selección** | `Home +1.5` |
-| **Probabilidad** | **95.0%** ███████████████████░ |
-| **Razonamiento** | margin=2.64 |
-
----
-
-## 45. Teplice B vs Bohemians1905 B
+## 21. Sparta Rotterdam vs MSV Duisburg
 
 | Campo | Valor |
 |-------|-------|
 | **Liga** | International Club Friendly |
-| **Minuto / Estado** | 27' — 1ª parte |
+| **Minuto / Estado** | 77' — 2ª parte |
 | **Marcador** | 0-0 |
-| **Mercado** | Over/Under 3.5 Goles |
-| **Selección** | `Under 3.5` |
+| **Mercado** | Over/Under 0.5 Goles |
+| **Selección** | `Over 0.5` |
 | **Probabilidad** | **95.0%** ███████████████████░ |
-| **Razonamiento** | xG=0.93, goles=0 |
+| **Razonamiento** | xG=5.75, goles=0 |
 
 ---
 
-## 46. Persija Jakarta vs PSMS Medan
+## 22. Oxford United vs Ipswich Town
 
 | Campo | Valor |
 |-------|-------|
-| **Liga** | Indonesia President Cup |
-| **Minuto / Estado** | 27' — 1ª parte |
+| **Liga** | International Club Friendly |
+| **Minuto / Estado** | 77' — 2ª parte |
 | **Marcador** | 1-0 |
 | **Mercado** | Over/Under 0.5 Goles |
 | **Selección** | `Over 0.5` |
 | **Probabilidad** | **95.0%** ███████████████████░ |
-| **Razonamiento** | xG=3.39, goles=1 |
+| **Razonamiento** | xG=4.14, goles=1 |
 
 ---
 
-## 47. University Azzurri FC vs Hellenic AC
+## 23. Holbaek vs BK Frem
 
 | Campo | Valor |
 |-------|-------|
-| **Liga** | Australia Darwin Premier League |
-| **Minuto / Estado** | 27' — 1ª parte |
+| **Liga** | Denmark Division 3 |
+| **Minuto / Estado** | 77' — 2ª parte |
+| **Marcador** | 1-1 |
+| **Mercado** | Over/Under 0.5 Goles |
+| **Selección** | `Over 0.5` |
+| **Probabilidad** | **95.0%** ███████████████████░ |
+| **Razonamiento** | xG=2.77, goles=2 |
+
+---
+
+## 24. IFK Lulea vs IFK Ostersunds
+
+| Campo | Valor |
+|-------|-------|
+| **Liga** | Sweden Div 3 Mellersta |
+| **Minuto / Estado** | 77' — 2ª parte |
+| **Marcador** | 2-3 |
+| **Mercado** | Over/Under 0.5 Goles |
+| **Selección** | `Over 0.5` |
+| **Probabilidad** | **95.0%** ███████████████████░ |
+| **Razonamiento** | xG=6.49, goles=5 |
+
+---
+
+## 25. Taftea IK vs Gottne IF
+
+| Campo | Valor |
+|-------|-------|
+| **Liga** | Sweden Div 3 Mellersta |
+| **Minuto / Estado** | 77' — 2ª parte |
+| **Marcador** | 0-1 |
+| **Mercado** | Over/Under 0.5 Goles |
+| **Selección** | `Under 0.5` |
+| **Probabilidad** | **95.0%** ███████████████████░ |
+| **Razonamiento** | xG=0.01, goles=1 |
+
+---
+
+## 26. Smedby AIS vs Orebro Syrianska IF
+
+| Campo | Valor |
+|-------|-------|
+| **Liga** | Sweden Div 3 Mellersta |
+| **Minuto / Estado** | 77' — 2ª parte |
+| **Marcador** | 1-0 |
+| **Mercado** | Ambos Marcan (BTTS) |
+| **Selección** | `No` |
+| **Probabilidad** | **95.0%** ███████████████████░ |
+| **Razonamiento** | P(≤1)=95.0% |
+
+---
+
+## 27. Torslanda IK vs Galtabacks BK
+
+| Campo | Valor |
+|-------|-------|
+| **Liga** | Sweden Div 3 Mellersta |
+| **Minuto / Estado** | 77' — 2ª parte |
+| **Marcador** | 1-1 |
+| **Mercado** | Over/Under 0.5 Goles |
+| **Selección** | `Over 0.5` |
+| **Probabilidad** | **95.0%** ███████████████████░ |
+| **Razonamiento** | xG=2.88, goles=2 |
+
+---
+
+## 28. Linero IF vs Osterlen FF
+
+| Campo | Valor |
+|-------|-------|
+| **Liga** | Sweden Div 3 Mellersta |
+| **Minuto / Estado** | 77' — 2ª parte |
 | **Marcador** | 0-0 |
 | **Mercado** | Over/Under 0.5 Goles |
 | **Selección** | `Over 0.5` |
 | **Probabilidad** | **95.0%** ███████████████████░ |
-| **Razonamiento** | xG=3.60, goles=0 |
+| **Razonamiento** | xG=3.06, goles=0 |
 
 ---
 
-## 48. Northern Tigers FC (W) vs Hills United (W)
+## 29. Vanersborgs IF vs Motala AIF FK
 
 | Campo | Valor |
 |-------|-------|
-| **Liga** | NSW Premier W-League |
-| **Minuto / Estado** | 27' — 1ª parte |
-| **Marcador** | 0-1 |
-| **Mercado** | Hándicap Asiático (+1.5) |
-| **Selección** | `Away +1.5` |
+| **Liga** | Sweden Div 3 Mellersta |
+| **Minuto / Estado** | 77' — 2ª parte |
+| **Marcador** | 2-1 |
+| **Mercado** | Over/Under 0.5 Goles |
+| **Selección** | `Over 0.5` |
 | **Probabilidad** | **95.0%** ███████████████████░ |
-| **Razonamiento** | margin=2.75 |
+| **Razonamiento** | xG=0.06, goles=3 |
 
 ---
 
-## 49. Rydalmere Lions FC vs Newcastle Jets FC (Youth)
+## 30. IFK Lidingo FK vs Angby IF
 
 | Campo | Valor |
 |-------|-------|
-| **Liga** | Australia New South Wales Super League |
-| **Minuto / Estado** | 27' — 1ª parte |
-| **Marcador** | 0-0 |
-| **Mercado** | Hándicap Asiático (+1.5) |
-| **Selección** | `Home +1.5` |
-| **Probabilidad** | **94.51%** ██████████████████░░ |
-| **Razonamiento** | margin=1.90 |
+| **Liga** | Sweden Div 3 Mellersta |
+| **Minuto / Estado** | 77' — 2ª parte |
+| **Marcador** | 2-1 |
+| **Mercado** | Over/Under 0.5 Goles |
+| **Selección** | `Over 0.5` |
+| **Probabilidad** | **95.0%** ███████████████████░ |
+| **Razonamiento** | xG=3.46, goles=3 |
 
 ---
 
-## 50. ShanXi Union U21 vs Zhejiang Greentown U21
+## 31. Orebro (W) vs Husqvarna (W)
 
 | Campo | Valor |
 |-------|-------|
-| **Liga** | China U21 League |
-| **Minuto / Estado** | 27' — 1ª parte |
+| **Liga** | Sweden Women Divi.2 |
+| **Minuto / Estado** | 77' — 2ª parte |
+| **Marcador** | 2-0 |
+| **Mercado** | Over/Under 0.5 Goles |
+| **Selección** | `Over 0.5` |
+| **Probabilidad** | **95.0%** ███████████████████░ |
+| **Razonamiento** | xG=0.07, goles=2 |
+
+---
+
+## 32. Umea IK (W) vs Goteborg (W)
+
+| Campo | Valor |
+|-------|-------|
+| **Liga** | Sweden Women Divi.2 |
+| **Minuto / Estado** | 77' — 1ª parte |
 | **Marcador** | 0-0 |
-| **Mercado** | Over/Under 4.5 Goles |
-| **Selección** | `Under 4.5` |
-| **Probabilidad** | **93.72%** ██████████████████░░ |
-| **Razonamiento** | xG=2.11, goles=0 |
+| **Mercado** | Over/Under 1.5 Goles |
+| **Selección** | `Under 1.5` |
+| **Probabilidad** | **95.0%** ███████████████████░ |
+| **Razonamiento** | xG=0.23, goles=0 |
+
+---
+
+## 33. Brondby IF (W) vs Nordsjaelland (W)
+
+| Campo | Valor |
+|-------|-------|
+| **Liga** | Denmark Womans League |
+| **Minuto / Estado** | 77' — 2ª parte |
+| **Marcador** | 1-1 |
+| **Mercado** | Over/Under 0.5 Goles |
+| **Selección** | `Over 0.5` |
+| **Probabilidad** | **95.0%** ███████████████████░ |
+| **Razonamiento** | xG=3.37, goles=2 |
+
+---
+
+## 34. HB Koge (W) vs ASA Aarhus (W)
+
+| Campo | Valor |
+|-------|-------|
+| **Liga** | Denmark Womans League |
+| **Minuto / Estado** | 77' — 2ª parte |
+| **Marcador** | 3-0 |
+| **Mercado** | Over/Under 0.5 Goles |
+| **Selección** | `Over 0.5` |
+| **Probabilidad** | **95.0%** ███████████████████░ |
+| **Razonamiento** | xG=4.36, goles=3 |
+
+---
+
+## 35. Odense BK (W) vs FC Copenhagen (W)
+
+| Campo | Valor |
+|-------|-------|
+| **Liga** | Denmark Womans League |
+| **Minuto / Estado** | 77' — 2ª parte |
+| **Marcador** | 2-1 |
+| **Mercado** | Over/Under 0.5 Goles |
+| **Selección** | `Over 0.5` |
+| **Probabilidad** | **95.0%** ███████████████████░ |
+| **Razonamiento** | xG=3.06, goles=3 |
+
+---
+
+## 36. Irtysh 1946 Omsk vs Torpedo Miass
+
+| Campo | Valor |
+|-------|-------|
+| **Liga** | Russian Second League Division A |
+| **Minuto / Estado** | 77' — 2ª parte |
+| **Marcador** | 0-0 |
+| **Mercado** | Over/Under 2.5 Goles |
+| **Selección** | `Under 2.5` |
+| **Probabilidad** | **95.0%** ███████████████████░ |
+| **Razonamiento** | xG=0.61, goles=0 |
+
+---
+
+## 37. FK Kauno Zalgiris II vs Atomsfera Mazeikiai
+
+| Campo | Valor |
+|-------|-------|
+| **Liga** | Lithuania - 2.Division |
+| **Minuto / Estado** | 77' — 2ª parte |
+| **Marcador** | 0-1 |
+| **Mercado** | Over/Under 0.5 Goles |
+| **Selección** | `Over 0.5` |
+| **Probabilidad** | **95.0%** ███████████████████░ |
+| **Razonamiento** | xG=4.35, goles=1 |
+
+---
+
+## 38. TSV Kottern vs FSV Pfaffenhofen
+
+| Campo | Valor |
+|-------|-------|
+| **Liga** | Germany Oberliga |
+| **Minuto / Estado** | 77' — 2ª parte |
+| **Marcador** | 0-3 |
+| **Mercado** | Over/Under 0.5 Goles |
+| **Selección** | `Over 0.5` |
+| **Probabilidad** | **95.0%** ███████████████████░ |
+| **Razonamiento** | xG=0.01, goles=3 |
+
+---
+
+## 39. FC Iskra Smolensk vs Dinamo Saint Petersburg
+
+| Campo | Valor |
+|-------|-------|
+| **Liga** | Russian Second League Division B |
+| **Minuto / Estado** | 77' — 2ª parte |
+| **Marcador** | 1-1 |
+| **Mercado** | Over/Under 0.5 Goles |
+| **Selección** | `Over 0.5` |
+| **Probabilidad** | **95.0%** ███████████████████░ |
+| **Razonamiento** | xG=0.06, goles=2 |
+
+---
+
+## 40. PIF Parainen vs JyTy
+
+| Campo | Valor |
+|-------|-------|
+| **Liga** | Finland Kolmonen |
+| **Minuto / Estado** | 77' — 2ª parte |
+| **Marcador** | 2-1 |
+| **Mercado** | Over/Under 0.5 Goles |
+| **Selección** | `Over 0.5` |
+| **Probabilidad** | **95.0%** ███████████████████░ |
+| **Razonamiento** | xG=5.00, goles=3 |
+
+---
+
+## 41. Viking (W) vs Odd BK (W)
+
+| Campo | Valor |
+|-------|-------|
+| **Liga** | Norway Division 1 Women |
+| **Minuto / Estado** | 77' — 2ª parte |
+| **Marcador** | 2-0 |
+| **Mercado** | Over/Under 0.5 Goles |
+| **Selección** | `Over 0.5` |
+| **Probabilidad** | **95.0%** ███████████████████░ |
+| **Razonamiento** | xG=4.49, goles=2 |
+
+---
+
+## 42. Northeast United vs Bodoland FC
+
+| Campo | Valor |
+|-------|-------|
+| **Liga** | India Durand Cup |
+| **Minuto / Estado** | 77' — 2ª parte |
+| **Marcador** | 1-0 |
+| **Mercado** | Over/Under 0.5 Goles |
+| **Selección** | `Over 0.5` |
+| **Probabilidad** | **95.0%** ███████████████████░ |
+| **Razonamiento** | xG=4.25, goles=1 |
+
+---
+
+## 43. Suduva Marijampole II vs Silute
+
+| Campo | Valor |
+|-------|-------|
+| **Liga** | Lithuania II Lyga |
+| **Minuto / Estado** | 77' — 2ª parte |
+| **Marcador** | 4-0 |
+| **Mercado** | Over/Under 0.5 Goles |
+| **Selección** | `Over 0.5` |
+| **Probabilidad** | **95.0%** ███████████████████░ |
+| **Razonamiento** | xG=3.60, goles=4 |
+
+---
+
+## 44. Sirijus Klaipeda vs DFK Dainava Alytus B
+
+| Campo | Valor |
+|-------|-------|
+| **Liga** | Lithuania II Lyga |
+| **Minuto / Estado** | 77' — 2ª parte |
+| **Marcador** | 4-1 |
+| **Mercado** | Over/Under 0.5 Goles |
+| **Selección** | `Over 0.5` |
+| **Probabilidad** | **95.0%** ███████████████████░ |
+| **Razonamiento** | xG=4.14, goles=5 |
+
+---
+
+## 45. Belshina (W) vs Energetik-BGU Minsk (W)
+
+| Campo | Valor |
+|-------|-------|
+| **Liga** | Belarus Womens Premier League |
+| **Minuto / Estado** | 77' — 2ª parte |
+| **Marcador** | 0-1 |
+| **Mercado** | Hándicap Asiático (+0.5) |
+| **Selección** | `Away +0.5` |
+| **Probabilidad** | **95.0%** ███████████████████░ |
+| **Razonamiento** | margin=1.97 |
+
+---
+
+## 46. Flekkeroy IL vs Haugesund 2
+
+| Campo | Valor |
+|-------|-------|
+| **Liga** | Norway Division 3 |
+| **Minuto / Estado** | 77' — 2ª parte |
+| **Marcador** | 1-1 |
+| **Mercado** | Over/Under 0.5 Goles |
+| **Selección** | `Over 0.5` |
+| **Probabilidad** | **95.0%** ███████████████████░ |
+| **Razonamiento** | xG=2.96, goles=2 |
+
+---
+
+## 47. Konnerud vs Nordstrand
+
+| Campo | Valor |
+|-------|-------|
+| **Liga** | Norway Division 3 |
+| **Minuto / Estado** | 77' — 2ª parte |
+| **Marcador** | 0-2 |
+| **Mercado** | Over/Under 0.5 Goles |
+| **Selección** | `Over 0.5` |
+| **Probabilidad** | **95.0%** ███████████████████░ |
+| **Razonamiento** | xG=4.55, goles=2 |
+
+---
+
+## 48. Alta vs IF Floya
+
+| Campo | Valor |
+|-------|-------|
+| **Liga** | Norway Division 3 |
+| **Minuto / Estado** | 77' — 2ª parte |
+| **Marcador** | 1-0 |
+| **Mercado** | Over/Under 2.5 Goles |
+| **Selección** | `Under 2.5` |
+| **Probabilidad** | **95.0%** ███████████████████░ |
+| **Razonamiento** | xG=0.07, goles=1 |
+
+---
+
+## 49. Fauske-Sprint vs Skjetten Fotball
+
+| Campo | Valor |
+|-------|-------|
+| **Liga** | Norway Division 3 |
+| **Minuto / Estado** | 77' — 2ª parte |
+| **Marcador** | 2-2 |
+| **Mercado** | Over/Under 0.5 Goles |
+| **Selección** | `Over 0.5` |
+| **Probabilidad** | **95.0%** ███████████████████░ |
+| **Razonamiento** | xG=0.06, goles=4 |
+
+---
+
+## 50. Jining team vs Weifang team
+
+| Campo | Valor |
+|-------|-------|
+| **Liga** | Shandong Qilu Football Super League |
+| **Minuto / Estado** | 77' — 2ª parte |
+| **Marcador** | 0-0 |
+| **Mercado** | Over/Under 0.5 Goles |
+| **Selección** | `Under 0.5` |
+| **Probabilidad** | **95.0%** ███████████████████░ |
+| **Razonamiento** | xG=0.02, goles=0 |
 
 ---
