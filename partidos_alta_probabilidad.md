@@ -1,6 +1,6 @@
 # 🎯 Partidos de Alta Probabilidad — iSportsAPI
 
-> **Generado:** `2026-11-10 12:07:59`  
+> **Generado:** `2026-11-10 20:13:34`  
 > **Fuente:** iSportsAPI (http://api.isportsapi.com)  
 > **Umbral de filtro:** ≥ 85.0%
 
